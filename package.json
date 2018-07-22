@@ -1,0 +1,29 @@
+{
+  "name": "store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch server --exec babel-node -- server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "nodemon": "*",
+    "webpack": "*",
+    "webpack-dev-middleware": "*"
+  },
+  "dependencies": {
+    "express": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "styled-components": "^3.3.3"
+  }
+}
