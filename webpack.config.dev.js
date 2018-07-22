@@ -1,7 +1,7 @@
 import path from 'path';
 
 export default {
-  entry: path.join(__dirname, '/client/index.js'),
+  entry: ['babel-polyfill', path.join(__dirname, '/client/index.js')],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/server/public'),

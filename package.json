@@ -12,6 +12,7 @@
   "devDependencies": {
     "babel-cli": "*",
     "babel-loader": "*",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "*",
     "babel-preset-react": "*",
     "babel-preset-stage-0": "*",
@@ -20,7 +21,10 @@
     "webpack-dev-middleware": "*"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "express": "*",
+    "mongoose": "^5.2.4",
     "react": "*",
     "react-dom": "*",
     "react-router-dom": "*",
