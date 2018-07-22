@@ -10,7 +10,7 @@ const Product = new Schema({
   updatedAt: { type: Number, default: Date.now },
   price: { type: Number, required: true },
   amount: { type: Number, required: true, default: 0 },
-  picture: { type: String, required: true, default: '/img/product-placeholder.png' }
+  picture: { type: String, required: true, default: '/img/product-placeholder.jpg' }
 })
 
 export default mongoose.model('Product', Product);
