@@ -1,0 +1,5 @@
+// Product constants
+export const REQUEST_PRODUCT = 'REQUEST_PRODUCT';
+export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS';
+export const RECEIVE_PRODUCT = 'RECEIVE_PRODUCT';
+export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';

@@ -24,10 +24,14 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "*",
+    "lodash": "^4.17.10",
     "mongoose": "^5.2.4",
     "react": "*",
     "react-dom": "*",
+    "react-redux": "^5.0.7",
     "react-router-dom": "*",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^3.3.3"
   }
 }

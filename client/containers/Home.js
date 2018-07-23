@@ -1,23 +1,16 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-
+import { connect } from 'react-redux';
+import { fetchProducts, createProduct } from '../actions/productsActions';
 import { ProductsList } from '../components/products';
 
-export default class Home extends Component {
+class Home extends Component {
   state = {
-    products: [],
     productName: '',
     productPrice: 0
   }
 
-  componentDidMount = async () => {
-    try {
-      const response = await axios.get('/api/products');
-      const products = response.data;
-      this.setState({ products });
-    } catch (e) {
-      console.log(e);
-    }
+  componentDidMount = () => {
+    this.props.fetchProducts();
   }
 
   changeProdcutName = e => {
@@ -30,24 +23,19 @@ export default class Home extends Component {
 
   submitProduct = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('/api/products', {
-        name: this.state.productName,
-        price: this.state.productPrice
-      });
-      const product = response.data;
-      this.setState({ products: [ ...this.state.products, product ]});
-    } catch (e) {
-      console.log(e);
-    }
+    this.props.createProduct({
+      name: this.state.productName,
+      price: this.state.productPrice
+    })
   }
 
   render() {
-    const { products, productName, productPrice } = this.state;
+    const { productName, productPrice } = this.state;
+    const { products } = this.props;
 
     return (
       <div>
-        <ProductsList products={products}/>
+        <ProductsList products={Object.values(products.products)}/>
         <form>
           <input type="text" placeholder="item name" value={productName} onChange={this.changeProdcutName}/>
           <input type="text" placeholder="item price" value={productPrice} onChange={this.changeProdcutPrice}/>
@@ -57,3 +45,7 @@ export default class Home extends Component {
     )
   }
 }
+
+const mapStateToProps = ({ products }) => ({ products });
+
+export default connect(mapStateToProps, { fetchProducts, createProduct })(Home);
