@@ -54,7 +54,10 @@ export const Title = styled.h3`
   color: #fff;
 `
 
-export const StyledLink = styled(Link)`
+export const Button = styled.button`
+  border: 0;
+  outline: 0;
+  background: transparent;
   text-decoration: none;
   color: #fff;
   border-radius: 3px;
@@ -67,3 +70,5 @@ export const StyledLink = styled(Link)`
     color: #1a1a1a;
   }
 `
+
+export const StyledLink = Button.withComponent(Link);

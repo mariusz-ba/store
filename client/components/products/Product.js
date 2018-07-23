@@ -11,6 +11,7 @@ export default class Product extends Component {
         <Figcaption>
           <Title>{name}</Title>
           <StyledLink to={`/products/${_id}`}>Visit</StyledLink>
+          {this.props.children}
         </Figcaption>
       </Figure>
     )

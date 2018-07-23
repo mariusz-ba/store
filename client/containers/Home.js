@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { fetchProducts, createProduct } from '../actions/productsActions';
+import { removeProduct, clearBasket } from '../actions/basketActions';
 import { ProductsList } from '../components/products';
 
 class Home extends Component {
@@ -31,7 +32,7 @@ class Home extends Component {
 
   render() {
     const { productName, productPrice } = this.state;
-    const { products } = this.props;
+    const { basket, products } = this.props;
 
     return (
       <div>
@@ -41,11 +42,28 @@ class Home extends Component {
           <input type="text" placeholder="item price" value={productPrice} onChange={this.changeProdcutPrice}/>
           <button type="submit" onClick={this.submitProduct}>Submit</button>
         </form>
+        <div>
+          <h2>Basket:</h2>
+          <ul>
+            {
+              Object.values(basket.products).map(product => (
+                <li>
+                  <p>{product.name}</p>
+                  <button onClick={() => this.props.removeProduct(product._id)}>removeProduct</button>
+                </li>
+              ))
+            }
+          </ul>
+          <button onClick={this.props.clearBasket}>Clear basket</button>
+        </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ products }) => ({ products });
+const mapStateToProps = ({ basket, products }) => ({ basket, products });
 
-export default connect(mapStateToProps, { fetchProducts, createProduct })(Home);
+export default connect(mapStateToProps, { 
+  fetchProducts, createProduct,
+  removeProduct, clearBasket
+})(Home);
