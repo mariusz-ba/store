@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Wrapper } from '../layout';
 import {
   Branding,
   Header,
   Navigation,
-  Wrapper
 } from './styles';
 
 export default class Navbar extends Component {

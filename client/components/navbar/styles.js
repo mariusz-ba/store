@@ -5,12 +5,6 @@ export const Header = styled.header`
   padding: 1rem 0;
 `;
 
-export const Wrapper = styled.div`
-  width: 83.3333%;
-  max-width: 1440px;
-  margin: 0 auto;
-`
-
 export const Branding = styled(Link)`
   text-decoration: none;
   display: block;
@@ -25,6 +19,8 @@ export const Branding = styled(Link)`
 `
 
 export const Navigation = styled.nav`
+  margin-top: 2rem;
+
   ul {
     list-style-type: none;
     display: flex;

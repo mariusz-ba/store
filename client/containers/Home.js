@@ -5,6 +5,10 @@ import { removeProduct, clearBasket } from '../actions/basketActions';
 import { ProductsList } from '../components/products';
 
 import Slider from '../components/slider';
+import { Wrapper } from '../components/layout';
+
+import styled from 'styled-components';
+
 
 class Home extends Component {
   state = {
@@ -43,7 +47,7 @@ class Home extends Component {
     ]
 
     return (
-      <div>
+      <Wrapper>
         <Slider images={images}/>
         <ProductsList products={Object.values(products.products)}/>
         <form>
@@ -65,7 +69,7 @@ class Home extends Component {
           </ul>
           <button onClick={this.props.clearBasket}>Clear basket</button>
         </div>
-      </div>
+      </Wrapper>
     )
   }
 }
