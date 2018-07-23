@@ -50,8 +50,21 @@ export const Figcaption = styled.figcaption`
   }
 `
 
-export const Title = styled.h3`
+export const Title = styled.div`
   color: #fff;
+  text-align: center;
+`
+
+export const TitleName = styled.h3`
+  text-decoration: underline;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  letter-spacing: .1em;
+`
+
+export const TitlePrice = styled.h3`
+  font-weight: 400;
 `
 
 export const Button = styled.button`
@@ -60,14 +73,16 @@ export const Button = styled.button`
   background: transparent;
   text-decoration: none;
   color: #fff;
-  border-radius: 3px;
   border: 1px solid #fff;
+  font-size: 1em;
+  padding: .5em 1em;
 
   transition: background linear .125s;
 
   &:hover {
     background: #fff;
     color: #1a1a1a;
+    cursor: pointer;
   }
 `
 

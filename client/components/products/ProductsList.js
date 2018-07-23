@@ -15,7 +15,7 @@ class ProductsList extends Component {
         { products &&
           products.map(product => (
             <Product key={product._id} {...product}>
-              <Button onClick={() => addProduct(product)}>Add to basket</Button>
+              <Button onClick={() => addProduct(product)}><i className="fas fa-shopping-cart"></i> Add to basket</Button>
             </Product>
           ))
         }
