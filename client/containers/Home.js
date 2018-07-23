@@ -41,9 +41,9 @@ class Home extends Component {
     const { basket, products } = this.props;
 
     const images = [
-      'https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=81a5f1725ca68c549e0054dcfdf269de&auto=format&fit=crop&w=1350&q=80',
-      'https://images.unsplash.com/photo-1532297539532-5bb652c0e49f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=537fdc567f9e1928a2463123c34c9810&auto=format&fit=crop&w=1350&q=80',
-      'https://images.unsplash.com/photo-1532324226343-ef5330a57cb7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0c5357ded063337fe1edf7fa2d222757&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1503532899220-c678a6808a63?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f4900370bef7237707e6d26b60dbf41&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1500907789384-0c3b4c3bdce4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fcc07ca2525ef8f0d0e70a4655f22da9&auto=format&fit=crop&w=1350&q=80',
+      'https://images.unsplash.com/photo-1519256155806-cd510524ed97?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1b92dd501bb6982f36f6b16819f40a4a&auto=format&fit=crop&w=1934&q=80',
     ]
 
     return (
