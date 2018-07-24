@@ -7,7 +7,10 @@ import {
   Navigation,
 } from './styles';
 
-export default class Navbar extends Component {
+import { openBasket } from '../../actions/basketActions';
+import { connect } from 'react-redux';
+
+class Navbar extends Component {
   render() {
     return (
       <Header>
@@ -23,8 +26,11 @@ export default class Navbar extends Component {
               <li><Link to="/contact">Contact</Link></li>
             </ul>
           </Navigation>
+          <button onClick={() => this.props.openBasket(true)}>Toggle basket</button>
         </Wrapper>
       </Header>
     )
   }
 }
+
+export default connect(null, { openBasket })(Navbar);

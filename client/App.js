@@ -11,6 +11,7 @@ import Contact from './containers/Contact';
 import Home from './containers/Home';
 import Product from './containers/Product';
 
+import Basket from './components/basket';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 
@@ -26,6 +27,7 @@ export default () => {
           <Route path="/products/:id" component={Product}/>
         </Switch>
         <Footer/>
+        <Basket/>
       </main>
     </Router>
   )
