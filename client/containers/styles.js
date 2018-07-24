@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from '../components/layout/style-utils';
 
 export const Title = styled.h1`
   text-align: center;
@@ -31,6 +32,12 @@ export const Pictures = styled.div`
   justify-content: center;
   align-items: center;
   margin: 2rem 0;
+
+  ${
+    media.mobile`
+      flex-direction: column;
+    `
+  }
 `
 
 export const Picture = styled.img`
@@ -38,4 +45,11 @@ export const Picture = styled.img`
   height: 400px;
   margin: 1rem;
   object-fit: cover;
+
+  ${
+    media.mobile`
+      width: 100%;
+      height: auto;
+    `
+  }
 `
