@@ -12,6 +12,7 @@ import Home from './containers/Home';
 import Product from './containers/Product';
 
 import Navbar from './components/navbar';
+import Footer from './components/footer';
 
 export default () => {
   return (
@@ -24,6 +25,7 @@ export default () => {
           <Route path="/contact" component={Contact}/>
           <Route path="/products/:id" component={Product}/>
         </Switch>
+        <Footer/>
       </main>
     </Router>
   )
