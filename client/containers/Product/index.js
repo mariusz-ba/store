@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom';
 import { Wrapper } from '../../components/layout';
 import { Container } from './styles';
 
+import PicturePreview from '../../components/picture-preview';
+
 class Product extends Component {
   componentDidMount() {
     this.fetchProduct();
@@ -24,13 +26,12 @@ class Product extends Component {
   render() {
     const { id } = this.props.match.params;
     const { products } = this.props.products;
-
-    console.log(products[id]);
+    const pictures = products[id] ? [products[id].picture] : []
 
     return (
       <Wrapper>
         <Container>
-          <div>Picture widget</div>
+          <PicturePreview pictures={pictures}/>
           <div>
             <h1>Product info</h1>
             <code>
