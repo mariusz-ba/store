@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { fetchProduct } from '../../actions/productsActions';
 import { withRouter } from 'react-router-dom';
 
-import { Wrapper } from '../../components/layout';
+import { 
+  Spacer,
+  Wrapper
+} from '../../components/layout';
 import { 
   Container,
   ProductInfo,
@@ -48,6 +51,7 @@ class Product extends Component {
 
     return (
       <Wrapper>
+        <Spacer>&#10699;</Spacer>
         <Container>
           <PicturePreview pictures={pictures}/>
           <ProductInfo>
