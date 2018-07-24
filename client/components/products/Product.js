@@ -9,11 +9,11 @@ import {
 
 export default class Product extends Component {
   render() {
-    const { _id, name, picture, price } = this.props;
+    const { _id, name, pictures, price } = this.props;
 
     return (
       <Figure>
-        <Picture src={picture} alt={name}/>
+        <Picture src={pictures[0]} alt={name}/>
         <Figcaption>
           <Title>
             <TitleName>{name}</TitleName>

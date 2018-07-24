@@ -47,7 +47,7 @@ class Product extends Component {
     if(!product)
       return ( <h1>Not found</h1> )
 
-    const pictures = [product.picture];
+    const pictures = product.pictures;
 
     return (
       <Wrapper>
