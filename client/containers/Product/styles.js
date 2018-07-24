@@ -2,17 +2,18 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-column-gap: 1rem;
 `
 
 export const ProductInfo = styled.div`
-  padding: 0 2rem;
+  padding-left: 2rem;
   color: #555555;
 `
 
 export const Name = styled.h4`
   color: #1a1a1a;
+  margin-bottom: 2rem;
 `
 
 export const Purchase = styled.div`
