@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { fetchProducts, createProduct } from '../actions/productsActions';
-import { removeProduct, clearBasket } from '../actions/basketActions';
 import { ProductsList } from '../components/products';
 
 import Slider from '../components/slider';
 import { Wrapper } from '../components/layout';
-
-import styled from 'styled-components';
-
 
 class Home extends Component {
   state = {
@@ -38,7 +34,7 @@ class Home extends Component {
 
   render() {
     const { productName, productPrice } = this.state;
-    const { basket, products } = this.props;
+    const { products } = this.props;
 
     const images = [
       'https://images.unsplash.com/photo-1503532899220-c678a6808a63?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9f4900370bef7237707e6d26b60dbf41&auto=format&fit=crop&w=1350&q=80',
@@ -55,28 +51,13 @@ class Home extends Component {
           <input type="text" placeholder="item price" value={productPrice} onChange={this.changeProdcutPrice}/>
           <button type="submit" onClick={this.submitProduct}>Submit</button>
         </form>
-        <div>
-          <h2>Basket:</h2>
-          <ul>
-            {
-              Object.values(basket.products).map(product => (
-                <li>
-                  <p>{product.name}</p>
-                  <button onClick={() => this.props.removeProduct(product._id)}>removeProduct</button>
-                </li>
-              ))
-            }
-          </ul>
-          <button onClick={this.props.clearBasket}>Clear basket</button>
-        </div>
       </Wrapper>
     )
   }
 }
 
-const mapStateToProps = ({ basket, products }) => ({ basket, products });
+const mapStateToProps = ({ products }) => ({ products });
 
 export default connect(mapStateToProps, { 
-  fetchProducts, createProduct,
-  removeProduct, clearBasket
+  fetchProducts, createProduct
 })(Home);
