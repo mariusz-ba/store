@@ -13,3 +13,8 @@ export const removeProduct = (productId) => ({
 export const clearBasket = () => ({
   type: TYPES.CLEAR_BASKET
 })
+
+export const openBasket = (open) => ({
+  type: TYPES.OPEN_BASKET,
+  payload: open
+})
