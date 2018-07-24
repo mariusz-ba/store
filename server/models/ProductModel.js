@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 // Product schema
 const Product = new Schema({
   name: { type: String, required: true },
-  description: { type: String, required: true, default: '' },
+  description: { type: String, required: true, default: 'Description not specified' },
   createdAt: { type: Number, default: Date.now },
   updatedAt: { type: Number, default: Date.now },
   price: { type: Number, required: true },
