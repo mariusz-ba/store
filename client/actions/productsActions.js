@@ -29,7 +29,7 @@ export const receiveProducts = (products) => ({
 export const fetchProduct = (id) => {
   return async dispatch => {
     dispatch(requestProduct(id));
-    const res = await axios.get(`/api/products${id}`);
+    const res = await axios.get(`/api/products/${id}`);
     const product = res.data;
     dispatch(receiveProduct(product));
   }
