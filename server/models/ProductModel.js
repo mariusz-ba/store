@@ -11,7 +11,8 @@ const Product = new Schema({
   price: { type: Number, required: true },
   pictures: { type: Array, required: true, default: ['/img/product-placeholder.jpg']},
   features: { type: Array, default: [] },
-  category: { type: Schema.Types.ObjectId, required: true, ref: 'Category'}
+  category: { type: Schema.Types.ObjectId, required: true, ref: 'Category'},
+  availability: [{ type: Schema.Types.ObjectId, required: true, ref: 'AvailableProduct'}]
 })
 
 export default mongoose.model('Product', Product);
