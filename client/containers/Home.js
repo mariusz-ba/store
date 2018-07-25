@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchProducts, createProduct } from 'actions/productsActions';
 import { ProductsList } from 'components/products';
 import Slider from 'components/slider';
-import { Wrapper } from 'components/layout';
+import Wrapper from 'blocks/Wrapper';
 
 class Home extends Component {
   state = {

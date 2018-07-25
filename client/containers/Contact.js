@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Spacer, Wrapper } from 'components/layout';
+import Spacer from 'blocks/Spacer';
+import Wrapper from 'blocks/Wrapper';
 import Slider from 'components/slider';
 import {
   Title,

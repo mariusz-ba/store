@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Wrapper } from 'components/layout';
+import Wrapper from 'blocks/Wrapper';
 import {
   Branding,
   Header,
