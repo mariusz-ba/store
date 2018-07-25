@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media } from '../components/layout/style-utils';
+import { media } from 'utils/style-utils';
 
 export const Title = styled.h1`
   text-align: center;

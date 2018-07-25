@@ -22,7 +22,8 @@ export default {
       containers: path.resolve('client/containers'),
       actions: path.resolve('client/actions'),
       reducers: path.resolve('client/reducers'),
-      blocks: path.resolve('client/blocks')
+      blocks: path.resolve('client/blocks'),
+      utils: path.resolve('client/utils')
     },
     extensions: ['.js']
   },

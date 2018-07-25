@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media } from '../layout/style-utils';
+import { media } from 'utils/style-utils';
 
 export const Aside = styled.aside`
   position: fixed;
