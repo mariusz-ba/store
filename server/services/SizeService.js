@@ -15,6 +15,10 @@ class SizeService {
     await size.save();
     return size;
   }
+
+  updateSize = async (sizeId, size) => {
+    return this.Size.findOneAndUpdate({ _id: sizeId }, { $set: { ...size }}, { new: true });
+  }
 }
 
 export default SizeService;
