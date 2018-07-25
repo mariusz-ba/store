@@ -19,6 +19,10 @@ class SizeService {
   updateSize = async (sizeId, size) => {
     return this.Size.findOneAndUpdate({ _id: sizeId }, { $set: { ...size }}, { new: true });
   }
+
+  deleteSize = async (sizeId) => {
+    return this.Size.deleteOne({ _id: sizeId });
+  }
 }
 
 export default SizeService;

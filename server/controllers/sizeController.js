@@ -25,4 +25,9 @@ router.put('/:id', async (req, res) => {
   res.status(200).json(size);
 })
 
+router.delete('/:id', async (req, res) => {
+  const deleted = await sizeService.deleteSize(req.params.id);
+  res.status(200).json(deleted);
+})
+
 export default router;
