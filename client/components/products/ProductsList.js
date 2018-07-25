@@ -4,7 +4,7 @@ import Product from './Product';
 import { Button, Grid } from './styles';
 
 import { connect } from 'react-redux';
-import { addProduct } from '../../actions/basketActions';
+import { addProduct } from 'actions/basketActions';
 
 class ProductsList extends Component {
   render() {

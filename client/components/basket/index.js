@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removeProduct, openBasket } from '../../actions/basketActions';
+import { removeProduct, openBasket } from 'actions/basketActions';
 
 import {
   Aside,
@@ -14,7 +14,7 @@ import {
   Purchase,
   PurchaseButton,
   PurchasePrice
-} from '../../containers/Product/styles';
+} from 'containers/Product/styles';
 
 class Basket extends Component {
   clickedOutside = e => {

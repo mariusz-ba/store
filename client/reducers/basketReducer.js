@@ -1,4 +1,4 @@
-import * as TYPES from '../actions/constants/basketConstants';
+import * as TYPES from 'actions/constants/basketConstants';
 import { omit } from 'lodash';
 
 const initial_state = {

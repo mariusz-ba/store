@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Wrapper } from '../layout';
+import { Wrapper } from 'components/layout';
 import {
   Branding,
   Header,
   Navigation,
 } from './styles';
 
-import { openBasket } from '../../actions/basketActions';
+import { openBasket } from 'actions/basketActions';
 import { connect } from 'react-redux';
 
 class Navbar extends Component {

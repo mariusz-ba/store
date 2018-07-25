@@ -1,4 +1,4 @@
-import * as TYPES from '../actions/constants/productsConstants';
+import * as TYPES from 'actions/constants/productsConstants';
 import { mapKeys } from 'lodash';
 
 const initial_state = {

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { 
-  Spacer,
-  Wrapper
-} from '../components/layout';
-import Slider from '../components/slider';
+import { Spacer, Wrapper } from 'components/layout';
+import Slider from 'components/slider';
 import {
   Title,
   Description,
