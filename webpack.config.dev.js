@@ -17,6 +17,13 @@ export default {
     ]
   },
   resolve: {
+    alias: {
+      components: path.resolve('client/components'),
+      containers: path.resolve('client/containers'),
+      actions: path.resolve('client/actions'),
+      reducers: path.resolve('client/reducers'),
+      blocks: path.resolve('client/blocks')
+    },
     extensions: ['.js']
-  }
+  },
 }
