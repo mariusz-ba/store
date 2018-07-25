@@ -10,8 +10,12 @@ import webpackConfig from '../webpack.config.dev.js';
 
 const app = express();
 
-import { productController } from './controllers';
-console.log('product controller', productController);
+import { 
+  productController,
+  categoryController,
+  sizeController,
+  availableProductController
+} from './controllers';
 
 // Database connection
 mongoose.connect('mongodb://127.0.0.1:27017/store');
@@ -33,6 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.use('/api/products', productController);
+app.use('/api/categories', categoryController);
+app.use('/api/sizes', sizeController);
+app.use('/api/available', availableProductController);
 
 
 // Main

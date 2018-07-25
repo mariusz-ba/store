@@ -9,9 +9,9 @@ const Product = new Schema({
   createdAt: { type: Number, default: Date.now },
   updatedAt: { type: Number, default: Date.now },
   price: { type: Number, required: true },
-  amount: { type: Number, required: true, default: 0 },
   pictures: { type: Array, required: true, default: ['/img/product-placeholder.jpg']},
-  features: { type: Array, default: [] }
+  features: { type: Array, default: [] },
+  category: { type: Schema.Types.ObjectId, required: true, ref: 'Category'}
 })
 
 export default mongoose.model('Product', Product);
