@@ -16,6 +16,14 @@ class ProductService {
     return product;
   }
 
+  updateProduct = async (productId, product) => {
+    return this.Product.findOneAndUpdate({ _id: productId }, { $set: { ...product }}, { new: true });
+  }
+
+  deleteProduct = async (productId) => {
+    return this.Product.deleteOne({ _id: productId });
+  }
+
   addAvailability = async (productId, availabilityId) => {
     return this.Product.findOneAndUpdate({ _id: productId }, { $push: { availability: availabilityId }});
   }
