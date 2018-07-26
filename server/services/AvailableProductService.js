@@ -12,9 +12,17 @@ class AvailableProductService {
   }
 
   saveAvailableProduct = async (product) => {
-    await product.save();
+    try {
+      await product.save();
+    } catch (e) {
+      console.log(e);
+    }
     return product;
   }
+
+  updateAvailableProduct = async (availabilityId, availability) => {
+    return this.AvailableProduct.findOneAndUpdate({ _id: availabilityId }, { $set: { ...availability }}, { new: true });
+  } 
 
   deleteAvailableProduct = async (availabilityId) => {
     return this.AvailableProduct.deleteOne({ _id: availabilityId });
