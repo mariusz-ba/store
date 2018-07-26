@@ -77,3 +77,31 @@ export const deletedProduct = (id) => ({
   type: TYPES.DELETE_PRODUCT,
   payload: id
 })
+
+// Create product availability
+export const createProductAvailability = (product, size, amount) => {
+  return async dispatch => {
+    const res = await axios.post('/api/available', { product, size, amount });
+    const availability = res.data;
+    dispatch(fetchProduct(availability.product));
+  }
+}
+
+// Update product availability
+export const updateProductAvailability = (availabilityId, size, amount) => {
+  return async dispatch => {
+    const res = await axios.put(`/api/available/${availabilityId}`, { size, amount });
+    const availability = res.data;
+    dispatch(fetchProduct(availability.product));
+  }
+}
+
+// Delete product availability
+export const deleteProductAvailability = (availabilityId, productId) => {
+  return async dispatch => {
+    const res = await axios.delete(`/api/available/${availabilityId}`);
+    const deleted = res.data;
+    if(deleted.n === 1 && deleted.ok === 1)
+      dispatch(fetchProduct(productId));
+  }
+}
