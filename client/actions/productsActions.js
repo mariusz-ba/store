@@ -53,3 +53,27 @@ export const createProduct = (data) => {
     dispatch(receiveProduct(product));
   }
 }
+
+// Updating product
+export const updateProduct = (id, data) => {
+  return async dispatch => {
+    const res = await axios.put(`/api/products/${id}`, data);
+    const product = res.data;
+    dispatch(receiveProduct(product));
+  }
+}
+
+// Deleting product
+export const deleteProduct = (id) => {
+  return async dispatch => {
+    const res = await axios.delete(`/api/products/${id}`);
+    const deleted = res.data;
+    if(deleted.n === 1 && deleted.ok === 1)
+      dispatch(deletedProduct(id));
+  }
+}
+
+export const deletedProduct = (id) => ({
+  type: TYPES.DELETE_PRODUCT,
+  payload: id
+})

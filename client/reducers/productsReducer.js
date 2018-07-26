@@ -1,5 +1,5 @@
 import * as TYPES from 'actions/constants/productsConstants';
-import { mapKeys } from 'lodash';
+import { mapKeys, omit } from 'lodash';
 
 const initial_state = {
   isFetching: false,
@@ -24,6 +24,10 @@ export default function reducer(state = initial_state, action) {
     }
     case TYPES.RECEIVE_PRODUCTS: {
       state = { ...state, isFetching: false, products: mapKeys(action.payload, '_id') }
+      break;
+    }
+    case TYPES.DELETE_PRODUCT: {
+      state = { ...state, products: omit(state.products, action.payload)};
       break;
     }
     default: {}
