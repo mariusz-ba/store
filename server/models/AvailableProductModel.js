@@ -9,4 +9,6 @@ const AvailableProduct = new Schema({
   amount: { type: Number, required: true, default: 0}
 })
 
+AvailableProduct.index({ product: 1, size: 1 }, { unique: true });
+
 export default mongoose.model('AvailableProduct', AvailableProduct);
