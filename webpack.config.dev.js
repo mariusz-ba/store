@@ -27,4 +27,5 @@ export default {
     },
     extensions: ['.js']
   },
+  mode: 'development'
 }
