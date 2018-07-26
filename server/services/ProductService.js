@@ -4,11 +4,11 @@ class ProductService {
   }
 
   getProducts = async () => {
-    return this.Product.find({}).populate('availability', 'size amount -_id');
+    return this.Product.find({}).populate('availability', 'size amount');
   }
 
   getProductById = async (productId) => {
-    return this.Product.findById(productId).populate('availability', 'size amount -_id');
+    return this.Product.findById(productId).populate('availability', 'size amount');
   }
 
   saveProduct = async (product) => {
