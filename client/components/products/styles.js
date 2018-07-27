@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { media } from 'utils/style-utils';
 
 export const Grid = styled.ul`
   list-style-type: none;
@@ -7,6 +8,10 @@ export const Grid = styled.ul`
   grid-template-columns: repeat(${props => props.columns ? props.columns : 1}, 1fr);
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
+
+  ${media.mobile`
+    grid-template-columns: 1fr;
+  `}
 `
 
 export const Figure = styled.figure`

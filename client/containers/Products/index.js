@@ -16,16 +16,30 @@ import { fetchCategories } from 'actions/categoriesActions';
 import { fetchProducts } from 'actions/productsActions';
 import { fetchSizes } from 'actions/sizesActions';
 
+import { media } from 'utils/style-utils';
 
 const Layout = styled.div`
   display: grid;
   grid-template-columns: 300px auto;
+  grid-row-gap: 1rem;
+
+  ${media.mobile`
+    grid-template-columns: 1fr;
+  `}
 `
 
 Layout.Left = styled.div`
+  margin-right: 1rem;
+  ${media.mobile`
+    margin-right: 0;
+  `}
 `
 
 Layout.Right = styled.div`
+  margin-left: 1rem;
+  ${media.mobile`
+    margin-left: 0;
+  `}
 `
 
 const Sorting = styled.div`

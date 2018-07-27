@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Filters = styled.form`
-  padding-right: 2rem;
   display: flex;
   flex-direction: column;
 `
