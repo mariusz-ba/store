@@ -102,7 +102,6 @@ class Products extends Component {
 
     return (
       <Wrapper>
-        <code><pre>{JSON.stringify(this.state, null, 2)}</pre></code>
         <Spacer>&#10699;</Spacer>
         <Layout>
           <Layout.Left>
@@ -140,7 +139,7 @@ class Products extends Component {
                   </select>
                 </Filters.Section.Body>
               </Filters.Section>
-              <Filters.Submit type="submit" onClick={this.onFilter}>Filter</Filters.Submit>
+              <Filters.Submit type="submit" onClick={this.onFilter}><i className="fas fa-filter"></i> Filter</Filters.Submit>
             </Filters>
           </Layout.Left>
           <Layout.Right>
