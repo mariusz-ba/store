@@ -15,12 +15,19 @@ class ProductService {
 
     const options = {
       skip: filter.skip ? Number(filter.skip) : 0,
-      limit: filter.limit ? Number(filter.limit) : null
+      limit: filter.limit ? Number(filter.limit) : undefined
     }
 
-    console.log('conditions: ', { ...conditions, price });
+    const products = await this.Product.find({ ...conditions, price }).populate('availability', 'size amount');
 
-    return this.Product.find({ ...conditions, price }, null, options).populate('availability', 'size amount');
+    if(filter.size) {
+      const filtered = products.filter(product => {
+        return product.availability.find(availability => availability.size == filter.size);
+      })
+      return { products: filtered.slice(options.skip, options.skip + options.limit), total: filtered.length };
+    } else {
+      return { products: products.slice(options.skip, options.skip + options.limit), total: products.length };
+    }
   }
 
   getProductById = async (productId) => {

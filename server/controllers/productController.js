@@ -8,18 +8,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const filter = pickBy(req.query, identity);
 
-  console.log(filter);
-
   const products = await productService.getProducts(filter);
-  // Filter returned products if size is specified
-  if(filter.size) {
-    const filtered = products.filter(product => {
-      return product.availability.find(availability => availability.size == filter.size);
-    })
-    res.status(200).json(filtered);
-  } else {
-    res.status(200).json(products);
-  }
+  res.status(200).json(products);
 })
 
 router.get('/:id', async (req, res) => {

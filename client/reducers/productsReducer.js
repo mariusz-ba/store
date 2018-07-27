@@ -4,6 +4,7 @@ import { mapKeys, omit } from 'lodash';
 const initial_state = {
   isFetching: false,
   products: {},
+  total: 0,
   errors: null
 }
 
@@ -23,7 +24,7 @@ export default function reducer(state = initial_state, action) {
       break;
     }
     case TYPES.RECEIVE_PRODUCTS: {
-      state = { ...state, isFetching: false, products: mapKeys(action.payload, '_id') }
+      state = { ...state, isFetching: false, products: mapKeys(action.payload.products, '_id'), total: action.payload.total }
       break;
     }
     case TYPES.DELETE_PRODUCT: {
