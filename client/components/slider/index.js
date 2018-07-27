@@ -29,7 +29,7 @@ export default class Slider extends Component {
       <SliderContainer>
         { images &&
           images.map((image, index) => (
-            <SliderImage src={image} alt={image} fade={index!==this.state.current}/>
+            <SliderImage key={index} src={image} alt={image} fade={index!==this.state.current}/>
           ))
         }
       </SliderContainer>
