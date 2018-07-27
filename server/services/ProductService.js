@@ -1,10 +1,26 @@
+import { pick } from 'lodash';
+
 class ProductService {
   constructor(Product) {
     this.Product = Product;
   }
 
-  getProducts = async () => {
-    return this.Product.find({}).populate('availability', 'size amount');
+  getProducts = async (filter = {}) => {
+    const conditions = pick(filter, ['category']);
+
+    const price = {
+      $gte: filter.priceFrom ? Number(filter.priceFrom) : 0,
+      $lte: filter.priceTo ? Number(filter.priceTo) : 1000000000
+    }
+
+    const options = {
+      skip: filter.skip ? Number(filter.skip) : 0,
+      limit: filter.limit ? Number(filter.limit) : null
+    }
+
+    console.log('conditions: ', { ...conditions, price });
+
+    return this.Product.find({ ...conditions, price }, null, options).populate('availability', 'size amount');
   }
 
   getProductById = async (productId) => {
