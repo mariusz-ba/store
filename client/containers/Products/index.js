@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { pick, pickBy, identity } from 'lodash';
 import styled from 'styled-components';
 import qs from 'querystring';
@@ -10,6 +10,7 @@ import Wrapper from 'blocks/Wrapper';
 import Filters from 'blocks/Filters';
 
 import { ProductsList } from 'components/products';
+import Paginator from 'components/Paginator';
 
 import { fetchCategories } from 'actions/categoriesActions';
 import { fetchProducts } from 'actions/productsActions';
@@ -84,19 +85,20 @@ class Products extends Component {
     this.props.history.push(`/products?${query}`)
   }
 
+  navigateToPage = index => {
+    const qr = qs.parse(this.props.location.search.slice(1));
+    qr.page = index;
+    const query = qs.stringify(qr);
+    this.props.history.push(`/products?${query}`);
+  }
+
   render() {
     const { priceFrom, priceTo, productsOnPage } = this.state;
     const { categories, products, sizes } = this.props;
 
-    let query = qs.parse(this.props.location.search.slice(1));
-
-    const pagination = [];
-    for(let i = 0; i < products.total / productsOnPage; ++i) {
-      query.page = i;
-      pagination.push((
-        <Link to={`/products?${qs.stringify(query)}`}>Page: {i}</Link>
-      ))
-    }
+    const query = qs.parse(this.props.location.search.slice(1));
+    const current = query.page ? Number(query.page) : 0;
+    const pages = products.total / productsOnPage;
 
     return (
       <Wrapper>
@@ -154,8 +156,9 @@ class Products extends Component {
             </Sorting>
             <ProductsList products={Object.values(products.products)}/>
             <div>
-              <h1>Pagination</h1>
-              { pagination }
+            {
+              <Paginator pages={pages} current={current} onItemClicked={(index) => this.navigateToPage(index)}/>
+            }
             </div>
           </Layout.Right>
         </Layout>
