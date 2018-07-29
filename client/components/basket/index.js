@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removeProduct, openBasket } from 'actions/basketActions';
+import { 
+  removeProduct, 
+  openBasket, 
+  changeProductAmount 
+} from 'actions/basketActions';
 
 import {
   Aside,
@@ -15,6 +19,8 @@ import {
   PurchaseButton,
   PurchasePrice
 } from 'containers/Product/styles';
+
+import NumericInput from 'components/NumericInput';
 
 class Basket extends Component {
   clickedOutside = e => {
@@ -56,10 +62,12 @@ class Basket extends Component {
                   </td>
                   <td><img src={product.pictures[0]} alt={product.name}/></td>
                   <td>
-                    <span>{product.name}</span>
+                    <span>{product.name} (Size: {product.size.short})</span>
                     <span>{product.description}</span>
                   </td>
-                  <td><input type="text"/></td>
+                  <td>
+                    <NumericInput value={product.amount} onChange={(value) => this.props.changeProductAmount(product._id, value)}/>
+                  </td>
                   <td>&euro; {product.price}</td>
                 </Product>
               ))
@@ -68,7 +76,7 @@ class Basket extends Component {
           </Products>
           <Purchase>
             <PurchaseButton>CHECKOUT</PurchaseButton>
-            <PurchasePrice>&euro; {products.map(product => product.price).reduce((a, b) => a + b, 0)}</PurchasePrice>
+            <PurchasePrice>&euro; {products.reduce((accumulator, product) => accumulator + (product.price * product.amount), 0)}</PurchasePrice>
           </Purchase>
           </React.Fragment>
         }
@@ -79,4 +87,7 @@ class Basket extends Component {
 
 const mapStateToProps = ({ basket }) => ({ basket });
 
-export default connect(mapStateToProps, { removeProduct, openBasket })(Basket);
+export default connect(
+  mapStateToProps, 
+  { removeProduct, openBasket, changeProductAmount }
+)(Basket);
