@@ -15,7 +15,7 @@ class ProductService {
 
     const options = {
       skip: filter.skip ? Number(filter.skip) : 0,
-      limit: filter.limit ? Number(filter.limit) : undefined
+      limit: filter.limit ? Number(filter.limit) : 1000000000
     }
 
     const products = await this.Product.find({ ...conditions, price }).populate('availability', 'size amount');
