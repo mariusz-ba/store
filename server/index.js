@@ -47,6 +47,15 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  const result = { error: err.messsage }
+
+  if(app.get('env') === 'production')
+    result.error = 'Unable to handle the request';
+
+  res.status(500).json(result);
+})
 
 // Export app
 app.listen(
