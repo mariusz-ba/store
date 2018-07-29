@@ -57,7 +57,8 @@ class Product extends Component {
     if(size) {
       this.props.addProduct({ 
         ...product, 
-        size
+        size,
+        amount: 1
       });
     } else {
       this.setState({
