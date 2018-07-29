@@ -5,26 +5,26 @@ export const Aside = styled.aside`
   position: fixed;
   top: 0;
   right: 0;
-  width: 50vw;
+  width: 50%;
   height: 100%;
+  padding-bottom: 1rem;
   z-index: 1000;
-  padding: 1rem;
   background: #fff;
   transition: transform ease-in .2s;
 
+  transform: ${props => props.closed ? 'translate3d(100%, 0, 0)' : 'translate3d(0, 0, 0)'};
+  
   ${
     media.mobile`
-      width: 100vw;
-      transform: ${props => props.closed ? 'translate3d(100vw, 0, 0)' : 'translate3d(0, 0, 0)'};
+      width: 100%;
+      transform: ${props => props.closed ? 'translate3d(100%, 0, 0)' : 'translate3d(0, 0, 0)'};
     `
   }
-
-  transform: ${props => props.closed ? 'translate3d(50vw, 0, 0)' : 'translate3d(0, 0, 0)'};
 `
 
 export const Title = styled.h2`
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
   font-weight: 400;
   letter-spacing: .1rem;
@@ -34,7 +34,7 @@ export const Title = styled.h2`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 2rem;
+  top: 1rem;
   left: 1rem;
   border: 0;
   outline: 0;
@@ -48,19 +48,42 @@ export const CloseButton = styled.button`
 `
 
 export const OutsideClickHandler = styled.span`
+  display: block;
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100vw;
+  left: -200%;
+  width: 200%;
   height: 100%;
   background: rgba(0, 0, 0, .75);
 
   transition: opacity linear .2s;
 
-  transform: translate3d(-100vw, 0, 0);
-
   visibility: ${props => props.closed ? 'hidden' : 'visible'};
   opacity: ${props => props.closed ? 0 : 1};
+`
+
+export const Scrollable = styled.div`
+  overflow-y: scroll;
+  height: 100%;
+  padding: 1rem;
+  padding-bottom: 5rem;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #a0a0a0;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #707070;
+  }
 `
 
 export const Products = styled.table`

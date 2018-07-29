@@ -8,10 +8,11 @@ import {
 
 import {
   Aside,
-  Products, Product,
   OutsideClickHandler,
+  CloseButton,
   Title,
-  CloseButton
+  Scrollable,
+  Products, Product
 } from './styles';
 
 import {
@@ -27,9 +28,15 @@ class Basket extends Component {
     this.props.openBasket(false);
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.basket.closed !== this.props.basket.closed) {
+      document.body.style.overflow = this.props.basket.closed ? '' : 'hidden';
+    }
+  }
+
   render() {
     const { basket } = this.props;
-    const products = Object.values(basket.products);
+  const products = Object.values(basket.products);
 
     return (
       <Aside closed={basket.closed}>
@@ -39,6 +46,7 @@ class Basket extends Component {
         { products.length === 0 &&
           <Title disabled>Your basket is empty</Title>
         }
+        <Scrollable>
         { products.length > 0 &&
           <React.Fragment>
           <Products>
@@ -80,6 +88,7 @@ class Basket extends Component {
           </Purchase>
           </React.Fragment>
         }
+        </Scrollable>
       </Aside>
     )
   }
