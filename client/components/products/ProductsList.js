@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Product from './Product';
-import { Button, Grid } from './styles';
+import { Button, Products, ProductItem } from './styles';
 
 import { connect } from 'react-redux';
 import { addProduct } from 'actions/basketActions';
@@ -11,15 +11,17 @@ class ProductsList extends Component {
     const { products, addProduct } = this.props;
 
     return (
-      <Grid columns={3}>
+      <Products>
         { products &&
           products.map(product => (
-            <Product key={product._id} {...product}>
-              <Button onClick={() => addProduct(product)}><i className="fas fa-shopping-cart"></i> Add to basket</Button>
-            </Product>
+            <ProductItem key={product._id}>
+              <Product {...product}>
+                <Button onClick={() => addProduct(product)}><i className="fas fa-shopping-cart"></i> Add to basket</Button>
+              </Product>
+            </ProductItem>
           ))
         }
-      </Grid>
+      </Products>
     )
   }
 }
