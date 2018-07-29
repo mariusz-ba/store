@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Pagination = styled.ul`
+  margin-top: 3rem;
   list-style-type: none;
   display: flex;
   justify-content: center;
