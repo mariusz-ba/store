@@ -34,6 +34,21 @@ export default function reducer(state = initial_state, action) {
       state = { ...state, closed: !action.payload };
       break;
     }
+    case TYPES.CHANGE_PRODUCT_AMOUNT: {
+      // action.payload = { id, amount }
+      const { productId, amount } = action.payload;
+      state = { 
+        ...state, 
+        products: { 
+          ...state.products, 
+          [productId]: { 
+            ...state.products[productId],
+            amount: parseInt(amount)
+          }
+        }
+      }
+      break;
+    }
     default: {}
   }
   return state;

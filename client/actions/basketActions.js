@@ -18,3 +18,8 @@ export const openBasket = (open) => ({
   type: TYPES.OPEN_BASKET,
   payload: open
 })
+
+export const changeProductAmount = (productId, amount) => ({
+  type: TYPES.CHANGE_PRODUCT_AMOUNT,
+  payload: { productId, amount }
+})
