@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchProducts } from 'actions/productsActions';
 import { ProductsList } from 'components/products';
 import Slider from 'components/slider';
+import Spacer from 'blocks/Spacer';
 import Wrapper from 'blocks/Wrapper';
 
 class Home extends Component {
@@ -25,6 +26,7 @@ class Home extends Component {
     return (
       <Wrapper>
         <Slider images={images}/>
+        <Spacer>&#10699;</Spacer>
         <ProductsList products={Object.values(products.products)}/>
       </Wrapper>
     )
