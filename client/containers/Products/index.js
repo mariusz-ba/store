@@ -41,7 +41,8 @@ class Products extends Component {
     size: '',
     priceFrom: '',
     priceTo: '',
-    productsOnPage: 3
+    productsOnPage: 12,
+    ppp: 12
   }
 
   componentDidMount() {
@@ -50,8 +51,9 @@ class Products extends Component {
     this.fetchProducts();
   }
 
-  componentDidUpdate(prevProps) {
-    if(prevProps.location.search !== this.props.location.search)
+  componentDidUpdate(prevProps, prevState) {
+    if((prevProps.location.search !== this.props.location.search) ||
+       (prevState.productsOnPage !== this.state.productsOnPage))
       this.fetchProducts();
   }
 
@@ -73,9 +75,16 @@ class Products extends Component {
   changeSize      = e => { this.setState({ size: e.target.value }) }
   changePriceFrom = e => { this.setState({ priceFrom: e.target.value }) }
   changePriceTo   = e => { this.setState({ priceTo: e.target.value }) }
+  changeProductsOnPage = e => { this.setState({ ppp: e.target.value }) }
 
   onFilter = e => {
     e.preventDefault();
+
+    const ppp = parseInt(this.state.ppp);
+    if(!ppp || ppp <= 0) 
+      this.setState({ productsOnPage: 12, ppp: 12 });
+    else
+      this.setState({ productsOnPage: ppp });
 
     const options = {
       category: this.state.category,
@@ -96,7 +105,7 @@ class Products extends Component {
   }
 
   render() {
-    const { priceFrom, priceTo, productsOnPage } = this.state;
+    const { priceFrom, priceTo, productsOnPage, ppp } = this.state;
     const { categories, products, sizes } = this.props;
 
     const query = qs.parse(this.props.location.search.slice(1));
@@ -109,6 +118,12 @@ class Products extends Component {
         <Layout>
           <Layout.Left>
             <Filters>
+              <Filters.Section>
+                <Filters.Section.Header>Products on page</Filters.Section.Header>
+                <Filters.Section.Body>
+                  <input type="text" placeholder="From" value={ppp} onChange={this.changeProductsOnPage}/>
+                </Filters.Section.Body>
+              </Filters.Section>
               <Filters.Section>
                 <Filters.Section.Header>Categories</Filters.Section.Header>
                 <Filters.Section.Body>
