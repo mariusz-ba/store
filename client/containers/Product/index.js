@@ -11,9 +11,10 @@ import {
   Purchase,
   PurchaseButton, PurchasePrice,
   Description,
-  Features,
-  Info
+  Features
 } from './styles';
+
+import { addProduct } from 'actions/basketActions';
 
 import PicturePreview from 'components/picture-preview';
 
@@ -54,18 +55,20 @@ class Product extends Component {
           <ProductInfo>
             <Name>{product.name}</Name>
             <Purchase>
-              <PurchaseButton>BUY</PurchaseButton>
+              <PurchaseButton onClick={() => this.props.addProduct(product)}>BUY</PurchaseButton>
               <PurchasePrice>&euro; {product.price}</PurchasePrice>
             </Purchase>
-            <Description>Small backpack ideal for everyday carry. This size is ideal for women and kids. It´s big enough for all your daily necessities and it even fits an 12” MacBook. Very lightweight and comfortable to carry. Available in various colours. Vegan friendly!</Description>
+            <Description>{product.description}</Description>
             <Features>
               <h4>Features and materials</h4>
               <ul>
-                <li>Shit</li>
-                <li>Other shit</li>
+              {
+                product.features.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))
+              }
               </ul>
             </Features>
-            <Info>Our products are made to order. Please allow 2-3 weeks for shipment. You need it fast? Let us know!</Info>
           </ProductInfo>
         </Container>
       </Wrapper>
@@ -75,4 +78,4 @@ class Product extends Component {
 
 const mapStateToProps = ({ products }) => ({ products });
 
-export default withRouter(connect(mapStateToProps, { fetchProduct })(Product));
+export default withRouter(connect(mapStateToProps, { fetchProduct, addProduct })(Product));
