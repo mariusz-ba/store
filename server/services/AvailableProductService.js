@@ -12,11 +12,7 @@ class AvailableProductService {
   }
 
   saveAvailableProduct = async (product) => {
-    try {
-      await product.save();
-    } catch (e) {
-      console.log(e);
-    }
+    await product.save();
     return product;
   }
 
