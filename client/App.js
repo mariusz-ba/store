@@ -7,6 +7,7 @@ import {
 
 // Components
 import About from './containers/About';
+import Checkout from './containers/Checkout';
 import Contact from './containers/Contact';
 import Dashboard from './containers/Dashboard';
 import Home from './containers/Home';
@@ -23,6 +24,7 @@ const Client = () => (
     <Switch>
       <Route exact path="/" component={Home}/>
       <Route path="/about" component={About}/>
+      <Route path="/checkout" component={Checkout}/>
       <Route path="/contact" component={Contact}/>
       <Route path="/products/:id" component={Product}/>
       <Route path="/products" component={Products}/>
