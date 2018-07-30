@@ -23,6 +23,9 @@ import Orders from './Orders';
 import Categories from './Categories';
 import Sizes from './Sizes';
 
+import Payments from './Payments';
+import Deliveries from './Deliveries';
+
 export default class Dashboard extends Component {
   render() {
     return (
@@ -35,6 +38,8 @@ export default class Dashboard extends Component {
           <Route path={`${this.props.match.path}/orders`} component={Orders}/>
           <Route path={`${this.props.match.path}/categories`} component={Categories}/>
           <Route path={`${this.props.match.path}/sizes`} component={Sizes}/>
+          <Route path={`${this.props.match.path}/payments`} component={Payments}/>
+          <Route path={`${this.props.match.path}/deliveries`} component={Deliveries}/>
         </Switch>
       </Container>
     )
