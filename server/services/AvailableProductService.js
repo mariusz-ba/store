@@ -45,6 +45,16 @@ class AvailableProductService {
 
     return result;
   }
+
+  reduceAvailableProducts = async (products = []) => {
+    products.forEach(async product => {
+      await this.AvailableProduct.findOneAndUpdate(
+          { product: product.product, size: product.size },
+          { $inc: { amount: -product.amount }}
+        )
+    })
+    return true;
+  }
 }
 
 export default AvailableProductService;

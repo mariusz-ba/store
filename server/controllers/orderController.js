@@ -38,6 +38,7 @@ router.post(
       const savedOrder = await orderService.saveOrder(order);
       await Order.populate(savedOrder, { path: 'payment', select: 'url'});
       // Reduce products availability
+      await availableProductService.reduceAvailableProducts(savedOrder.products);
       //await availableProductService.reduceAvailability(req.body.products);
       res.status(200).json(savedOrder);
     }
