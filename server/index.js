@@ -14,7 +14,9 @@ import {
   productController,
   categoryController,
   sizeController,
-  availableProductController
+  availableProductController,
+  paymentController,
+  deliveryController
 } from './controllers';
 
 // Database connection
@@ -40,6 +42,8 @@ app.use('/api/products', productController);
 app.use('/api/categories', categoryController);
 app.use('/api/sizes', sizeController);
 app.use('/api/available', availableProductController);
+app.use('/api/payments', paymentController);
+app.use('/api/deliveries', deliveryController);
 
 
 // Main
@@ -49,6 +53,7 @@ app.get('*', (req, res) => {
 
 // Error handling middleware
 app.use((err, req, res, next) => {
+  console.log(err);
   const result = { error: err.messsage }
 
   if(app.get('env') === 'production')
