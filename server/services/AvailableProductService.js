@@ -27,6 +27,24 @@ class AvailableProductService {
   deleteAvailableProducts = async (productId) => {
     return this.AvailableProduct.deleteMany({ product: productId });
   }
+
+  checkAvailability = async (products = []) => {
+    const productsIds = products.map(product => product.product);
+    const availability = await this.AvailableProduct.find({ product: { $in: productsIds }})
+
+    const result = products.map(product => {
+      const available = availability.find(entry => (entry.product == product.product && entry.size == product.size));
+
+      return {
+        product: product.product,
+        size: product.size,
+        amount: product.amount,
+        available: available ? available.amount : 0
+      }
+    })
+
+    return result;
+  }
 }
 
 export default AvailableProductService;
