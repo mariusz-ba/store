@@ -13,6 +13,7 @@ import Dashboard from './containers/Dashboard';
 import Home from './containers/Home';
 import Product from './containers/Product';
 import Products from './containers/Products';
+import Track from './containers/Track';
 
 import Basket from './components/basket';
 import Navbar from './components/navbar';
@@ -28,6 +29,7 @@ const Client = () => (
       <Route path="/contact" component={Contact}/>
       <Route path="/products/:id" component={Product}/>
       <Route path="/products" component={Products}/>
+      <Route path="/track/:id" component={Track}/>
     </Switch>
     <Footer/>
     <Basket/>
