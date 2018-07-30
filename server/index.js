@@ -16,7 +16,8 @@ import {
   sizeController,
   availableProductController,
   paymentController,
-  deliveryController
+  deliveryController,
+  orderController
 } from './controllers';
 
 // Database connection
@@ -44,6 +45,7 @@ app.use('/api/sizes', sizeController);
 app.use('/api/available', availableProductController);
 app.use('/api/payments', paymentController);
 app.use('/api/deliveries', deliveryController);
+app.use('/api/orders', orderController);
 
 
 // Main

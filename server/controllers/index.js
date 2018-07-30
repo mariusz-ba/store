@@ -4,6 +4,7 @@ import sizeController from './sizeController';
 import availableProductController from './availableProductController';
 import paymentController from './paymentController';
 import deliveryController from './deliveryController';
+import orderController from './orderController';
 
 module.exports = {
   productController,
@@ -11,5 +12,6 @@ module.exports = {
   sizeController,
   availableProductController,
   paymentController,
-  deliveryController
+  deliveryController,
+  orderController
 }
