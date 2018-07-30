@@ -19,7 +19,8 @@ router.get(
 router.get(
   '/:id',
   catchExceptions(async (req, res) => {
-    const order = await orderService.getOrderById(req.parms.id);
+    const order = await orderService.getOrderById(req.params.id);
+    await Order.populate(order, { path: 'payment', select: 'url' });
     res.status(200).json(order);
   })
 )
