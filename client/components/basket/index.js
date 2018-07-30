@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { 
   removeProduct, 
   openBasket, 
@@ -19,7 +20,15 @@ import {
   Purchase,
   PurchaseButton,
   PurchasePrice
-} from 'containers/Product/styles';
+} from 'containers/Product/styles'; 
+
+import styled from 'styled-components';
+const PurchaseLink = PurchaseButton.withComponent(Link).extend`
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+`
 
 import NumericInput from 'components/NumericInput';
 
@@ -83,7 +92,7 @@ class Basket extends Component {
             </tbody>
           </Products>
           <Purchase>
-            <PurchaseButton>CHECKOUT</PurchaseButton>
+            <PurchaseLink to="/checkout">CHECKOUT</PurchaseLink>
             <PurchasePrice>&euro; {products.reduce((accumulator, product) => accumulator + (product.price * product.amount), 0)}</PurchasePrice>
           </Purchase>
           </React.Fragment>
