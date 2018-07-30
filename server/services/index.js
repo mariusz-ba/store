@@ -4,6 +4,7 @@ import SizeService from './SizeService';
 import AvailableProductService from './AvailableProductService';
 import PaymentService from './PaymentService';
 import DeliveryService from './DeliveryService';
+import OrderService from './OrderService'
 
 import { 
   Product,
@@ -11,7 +12,8 @@ import {
   Size,
   AvailableProduct,
   Payment,
-  Delivery
+  Delivery,
+  Order
 } from '../models';
 
 const productService = new ProductService(Product);
@@ -20,6 +22,7 @@ const sizeService = new SizeService(Size);
 const availableProductService = new AvailableProductService(AvailableProduct);
 const paymentService = new PaymentService(Payment);
 const deliveryService = new DeliveryService(Delivery);
+const orderService = new OrderService(Order);
 
 module.exports = {
   productService,
@@ -27,5 +30,6 @@ module.exports = {
   sizeService,
   availableProductService,
   paymentService,
-  deliveryService
+  deliveryService,
+  orderService
 }
