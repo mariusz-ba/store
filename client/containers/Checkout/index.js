@@ -139,12 +139,13 @@ class Checkout extends Component {
       });
       const data = response.data;
       console.log(data);
-      // Redirect to /checkout/payment
+      this.setState({ isFetching: false })
+      // Redirect to /checkout/payment/:id
+      this.props.history.push(`/checkout/payment/${data._id}`)
     } catch (e) {
-      this.setState({ errors: e.response.data })
+      this.setState({ errors: e.response.data, isFetching: false })
     }
 
-    this.setState({ isFetching: false })
 
     // Send data to the server
     // If server responds with the error (products no longer available) set errors and notify user
