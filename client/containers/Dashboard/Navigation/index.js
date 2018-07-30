@@ -36,6 +36,8 @@ export default class Navigation extends Component {
           <List.Item><Link to="/dashboard/orders">Orders</Link></List.Item>
           <List.Item><Link to="/dashboard/categories">Categories</Link></List.Item>
           <List.Item><Link to="/dashboard/sizes">Sizes</Link></List.Item>
+          <List.Item><Link to="/dashboard/payments">Payments</Link></List.Item>
+          <List.Item><Link to="/dashboard/deliveries">Deliveries</Link></List.Item>
         </List>
       </Toolbar>
     )
