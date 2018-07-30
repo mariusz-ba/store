@@ -21,7 +21,15 @@ router.get(
   catchExceptions(async (req, res) => {
     const order = await orderService.getOrderById(req.params.id);
     await Order.populate(order, { path: 'payment', select: 'url' });
-    res.status(200).json(order);
+    // Check hash
+    if(req.query.hash) {
+      if(req.query.hash === order.hash)
+        res.status(200).json(order);
+      else
+        res.status(401).json({ error: 'You have no permissions to access this route'});
+    } else {
+      res.status(400).json({ error: 'Hash param must be specified'});
+    }
   })
 )
 

@@ -1,6 +1,9 @@
 // Module dependencies
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import { saltRounds } from '../config';
 const Schema = mongoose.Schema;
+
 
 import Product from '../models/ProductModel';
 import Payment from '../models/PaymentModel';
@@ -19,7 +22,8 @@ const Order = new Schema({
   client: { type: Object, required: true },
   address: { type: Object, required: true },
   createdAt: { type: Number, default: Date.now },
-  status: { type: String, required: true, default: 'Transaction Pending' }
+  status: { type: String, required: true, default: 'Transaction Pending' },
+  hash: { type: String, required: true, default: 'hash' }
 })
 
 Order.pre('save', async function(next) {
@@ -44,6 +48,11 @@ Order.pre('save', async function(next) {
     const deliveryPrice = delivery.price;
     // Calculate order price
     this.price = Number(productsPrice) + Number(paymentPrice) + Number(deliveryPrice);
+
+    // Generate random hash
+    const hashed = await bcrypt.hash(`SomerandomString123${Date.now()}`, saltRounds);
+    this.hash = hashed;
+
     next();
   } catch(e) {
     console.log(e);
