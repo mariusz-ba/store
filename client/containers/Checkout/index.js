@@ -141,7 +141,7 @@ class Checkout extends Component {
       console.log(data);
       this.setState({ isFetching: false })
       // Redirect to /checkout/payment/:id
-      this.props.history.push(`/checkout/payment/${data._id}`)
+      this.props.history.push(`/checkout/payment/${data._id}?hash=${data.hash}`);
     } catch (e) {
       this.setState({ errors: e.response.data, isFetching: false })
     }

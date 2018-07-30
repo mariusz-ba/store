@@ -17,7 +17,7 @@ class Payment extends Component {
   }
 
   fetchOrder = async () => {
-    const response = await axios.get(`/api/orders/${this.props.match.params.id}`);
+    const response = await axios.get(`/api/orders/${this.props.match.params.id}${this.props.location.search}`);
     const order = response.data;
     this.setState({ order });
   }
@@ -31,7 +31,7 @@ class Payment extends Component {
           <React.Fragment>
             <h1>Thank you for your purchase</h1>
             <h3>Use link bellow to track your order status</h3>
-            <Link to={`/track/${order._id}`}>Tracker</Link>
+            <Link to={`/track/${order._id}${this.props.location.search}`}>Tracker</Link>
             <h3>Use this button to pay your order</h3>
             <a href={order.payment.url}>PAY</a>
           </React.Fragment>

@@ -16,9 +16,7 @@ export default class Track extends Component {
   }
 
   fetchOrder = async () => {
-    // Create some kind of a hash so the order can be accessed
-    // only by allowed person
-    const response = await axios.get(`/api/orders/${this.props.match.params.id}`);
+    const response = await axios.get(`/api/orders/${this.props.match.params.id}${this.props.location.search}`);
     const order = response.data;
     this.setState({ order });
   }
