@@ -18,7 +18,8 @@ const Order = new Schema({
   price: { type: Number, required: true, default: 0 },
   client: { type: Object, required: true },
   address: { type: Object, required: true },
-  createdAt: { type: Number, default: Date.now }
+  createdAt: { type: Number, default: Date.now },
+  status: { type: String, required: true, default: 'Transaction Pending' }
 })
 
 Order.pre('save', async function(next) {
