@@ -93,17 +93,15 @@ export const Products = styled.table`
   margin-bottom: 2rem;
 
   thead {
-    border-bottom: 1px solid #1a1a1a;
-
-    &::after {
-      content: '';
-      display: block;
-      height: .5rem;
-      color: transparent;
+    tr {
+      border-bottom: 1px solid #555555;
     }
   }
   th {
+    padding-bottom: .5rem;
     text-align: left;
+    font-weight: bold;
+    color: #555555;
   }
   
   tbody {
