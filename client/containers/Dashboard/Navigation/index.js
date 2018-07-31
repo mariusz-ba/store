@@ -1,45 +1,47 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 
-const List = styled.ol`
-  list-style-type: none;
-`
+import { List, Item } from './styles';
 
-List.Item = styled.li`
-  background: #fff;
-
-  a {
-    display: block;
-    padding: .5rem 1rem;
-    color: #1a1a1a;
-    text-decoration: none;
-
-    &:hover {
-      cursor: pointer;
-      background: rgba(0, 0, 0, .02);
-    }
+class Navigation extends Component {
+  state = {
+    links: [
+      { path: '/dashboard', text: 'Overview', icon: 'fas fa-home' },
+      { path: '/dashboard/products', text: 'Products', icon: 'fas fa-tshirt', badge: 364 },
+      { path: '/dashboard/orders', text: 'Orders', icon: 'fas fa-shopping-cart', badge: 71 },
+      { path: '/dashboard/categories', text: 'Categories', icon: 'fas fa-object-group', badge: 21 },
+      { path: '/dashboard/sizes', text: 'Sizes', icon: 'fas fa-search-plus', badge: 13 },
+      { path: '/dashboard/payments', text: 'Payments', icon: 'fas fa-money-check-alt', badge: 4 },
+      { path: '/dashboard/deliveries', text: 'Deliveries', icon: 'fas fa-truck', badge: 3 }
+    ]
   }
-`
 
-const Toolbar = styled.nav`
-  border-right: 1px solid rgba(0, 0, 0, .125);
-`
-
-export default class Navigation extends Component {
   render() {
+    const { links } = this.state;
+    const { pathname } = this.props.location;
+
     return (
-      <Toolbar>
+      <nav>
         <List>
-          <List.Item><Link to="/dashboard">Overview</Link></List.Item>
-          <List.Item><Link to="/dashboard/products">Products</Link></List.Item>
-          <List.Item><Link to="/dashboard/orders">Orders</Link></List.Item>
-          <List.Item><Link to="/dashboard/categories">Categories</Link></List.Item>
-          <List.Item><Link to="/dashboard/sizes">Sizes</Link></List.Item>
-          <List.Item><Link to="/dashboard/payments">Payments</Link></List.Item>
-          <List.Item><Link to="/dashboard/deliveries">Deliveries</Link></List.Item>
+        { 
+          links.map((link, index) => (
+            <li>
+              <Item key={index} to={link.path} selected={link.path === pathname}>
+                <Item.Icon className={link.icon}></Item.Icon>
+                <Item.Text>
+                  {link.text}
+                  { link.badge &&
+                    <Item.Badge>{link.badge}</Item.Badge>
+                  }
+                </Item.Text>
+              </Item>
+            </li>
+          ))
+        }
         </List>
-      </Toolbar>
+      </nav>
     )
   }
 }
+
+export default withRouter(Navigation);
