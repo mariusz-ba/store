@@ -5,7 +5,8 @@ export default class Deliveries extends Component {
   state = {
     deliveries: [],
     deliveryName: '',
-    deliveryPrice: ''
+    deliveryPrice: '',
+    deliveryIcon: ''
   }
 
   componentDidMount = async () => {
@@ -22,12 +23,21 @@ export default class Deliveries extends Component {
     this.setState({ deliveryPrice: e.target.value });
   }
 
+  changeDeliveryIcon = e => {
+    this.setState({ deliveryIcon: e.target.value });
+  }
+
   submit = async e => {
     e.preventDefault();
-    const { deliveryName, deliveryPrice } = this.state;
-    const response = await axios.post('/api/deliveries', { name: deliveryName, price: deliveryPrice });
+    const { deliveryName, deliveryPrice, deliveryIcon } = this.state;
+    const response = await axios.post('/api/deliveries', { name: deliveryName, price: Number(deliveryPrice), icon: deliveryIcon });
     const delivery = response.data;
-    this.setState({ deliveries: [ ...this.state.deliveries, delivery ]});
+    this.setState({ 
+      deliveries: [ ...this.state.deliveries, delivery ],
+      deliveryName: '',
+      deliveryPrice: '',
+      deliveryIcon: ''
+    });
   }
 
   deleteDelivery = async id => {
@@ -38,7 +48,7 @@ export default class Deliveries extends Component {
   }
 
   render() {
-    const { deliveries, deliveryName, deliveryPrice } = this.state;
+    const { deliveries, deliveryName, deliveryPrice, deliveryIcon } = this.state;
 
     return (
       <div>
@@ -46,7 +56,10 @@ export default class Deliveries extends Component {
         <ul>
           { deliveries &&
             deliveries.map(delivery => (
-              <li key={delivery._id}>Name: {delivery.name}, Price: {delivery.price} <button onClick={() => this.deleteDelivery(delivery._id)}>Delete</button></li>
+              <li key={delivery._id}>
+                <div>Name: {delivery.name}, Price: {delivery.price}, Icon: {delivery.icon}</div>
+                <button onClick={() => this.deleteDelivery(delivery._id)}>Delete</button>
+              </li>
             ))
           }
         </ul>
@@ -54,6 +67,7 @@ export default class Deliveries extends Component {
           <h2>Create new delivery</h2>
           <input type="text" placeholder="Delivery name" value={deliveryName} onChange={this.changeDeliveryName}/>
           <input type="text" placeholder="Delivery price" value={deliveryPrice} onChange={this.changeDeliveryPrice}/>
+          <input type="text" placeholder="Delivery icon" value={deliveryIcon} onChange={this.changeDeliveryIcon}/>
           <button type="submit" onClick={this.submit}>Submit</button>
         </div>
       </div>
