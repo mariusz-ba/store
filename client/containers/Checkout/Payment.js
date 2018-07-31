@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
 import Spacer from 'blocks/Spacer';
 import Wrapper from 'blocks/Wrapper';
+
+import { clearBasket } from 'actions/basketActions';
 
 const Heading = styled.h2`
   text-align: center;
@@ -57,6 +60,8 @@ class Payment extends Component {
   }
 
   componentDidMount() {
+    // Clear basket first
+    this.props.clearBasket();
     this.fetchOrder();
   }
 
@@ -95,4 +100,4 @@ class Payment extends Component {
   }
 }
 
-export default withRouter(Payment);
+export default withRouter(connect(null, { clearBasket })(Payment));
