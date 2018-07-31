@@ -10,7 +10,7 @@ import { removeProduct, changeProductAmount } from 'actions/basketActions';
 import { Products, Product } from 'components/basket/styles.js';
 import NumericInput from 'components/NumericInput';
 
-import { Address, Layout, Options } from './styles';
+import { Address, Layout, Options, Summary } from './styles';
 
 class Checkout extends Component {
   state = {
@@ -199,88 +199,96 @@ class Checkout extends Component {
         </Products>
         <Layout>
           <Layout.Section>
-            <Options>
-            { _.get(payment, 'options', undefined) &&
-              Object.values(payment.options).map(option => (
-                <Options.Item key={option._id}>
-                  <input 
-                    id={option._id} 
-                    type="radio" 
-                    radioGroup="payment"
-                    checked={payment.selected === option._id}
-                    onChange={() => this.changePayment(option._id)}/>
-                  <label htmlFor={option._id}>
-                    <img src={option.icon} alt={option.name}/>
-                    <Options.Content>
-                      <Options.Name>{option.name}</Options.Name>
-                      <Options.Price>+&euro;{option.price}</Options.Price>
-                    </Options.Content>
-                  </label>
-                </Options.Item>
-              ))
-            }
-            </Options>
-
-            <Options>
+            <div>
+              <Layout.Section.Heading>Payment method:</Layout.Section.Heading>
+              <Options>
+              { _.get(payment, 'options', undefined) &&
+                Object.values(payment.options).map(option => (
+                  <Options.Item key={option._id}>
+                    <input 
+                      id={option._id} 
+                      type="radio" 
+                      radioGroup="payment"
+                      checked={payment.selected === option._id}
+                      onChange={() => this.changePayment(option._id)}/>
+                    <label htmlFor={option._id}>
+                      <img src={option.icon} alt={option.name}/>
+                      <Options.Content>
+                        <Options.Name>{option.name}</Options.Name>
+                        <Options.Price>+&euro;{option.price}</Options.Price>
+                      </Options.Content>
+                    </label>
+                  </Options.Item>
+                ))
+              }
+              </Options>
+            </div>
             { _.get(delivery, 'options', undefined) &&
               _.get(payment, 'selected', undefined) !== undefined &&
-              Object.values(delivery.options).map(option => (
-                <Options.Item key={option._id}> 
-                  <input 
-                    id={option._id} 
-                    type="radio" 
-                    radioGroup="delivery"
-                    checked={delivery.selected === option._id}
-                    onChange={() => this.changeDelivery(option._id)}/>
-                  <label htmlFor={option._id}>
-                    <img src={option.icon} alt={option.name}/>
-                    <Options.Content>
-                      <Options.Name>{option.name}</Options.Name>
-                      <Options.Price>+&euro;{option.price}</Options.Price>
-                    </Options.Content>
-                  </label>
-                </Options.Item>
-              ))
+              <div>
+                <Layout.Section.Heading>Delivery:</Layout.Section.Heading>
+                <Options>
+                {
+                  Object.values(delivery.options).map(option => (
+                    <Options.Item key={option._id}> 
+                      <input 
+                        id={option._id} 
+                        type="radio" 
+                        radioGroup="delivery"
+                        checked={delivery.selected === option._id}
+                        onChange={() => this.changeDelivery(option._id)}/>
+                      <label htmlFor={option._id}>
+                        <img src={option.icon} alt={option.name}/>
+                        <Options.Content>
+                          <Options.Name>{option.name}</Options.Name>
+                          <Options.Price>+&euro;{option.price}</Options.Price>
+                        </Options.Content>
+                      </label>
+                    </Options.Item>
+                  ))
+                }
+                </Options>
+              </div>
             }
-            </Options>
           </Layout.Section>
           <Layout.Section>
           { _.get(delivery, 'selected', undefined) !== undefined &&
             <React.Fragment>
               <Address>
-                Client address
+                <Layout.Section.Heading>Client address</Layout.Section.Heading>
+                <Address.Heading>&nbsp;</Address.Heading>
                 { address &&
                   Object.values(address).map((field, index) => (
-                    <div key={index}>
+                    <Address.Field key={index}>
                       <input 
                         type="text" 
                         placeholder={field.label} 
                         value={field.value}
                         onChange={(e) => this.onChangeAddress(field.key, e.target.value)}/>
-                    </div>
+                    </Address.Field>
                   ))
                 }
               </Address>
               <Address>
-                <h3>Delivery address</h3>
-                <div>
+                <Layout.Section.Heading>Delivery address</Layout.Section.Heading>
+                <Address.Heading>
                   <input 
                     id="useAddressAsDeliveryAddress" 
                     type="checkbox" 
                     checked={useAddressAsDeliveryAddress} 
                     onChange={this.toggleDeliveryAddress}/>
                   <label htmlFor="useAddressAsDeliveryAddress">Use client address</label>
-                </div>
+                </Address.Heading>
                 { daddress &&
                   Object.values(daddress).map((field, index) => (
-                    <div key={index}>
+                    <Address.Field key={index}>
                       <input 
                         type="text" 
                         placeholder={field.label} 
                         value={field.value}
                         onChange={(e) => this.onChangeDeliveryAddress(field.key, e.target.value)}
                         disabled={useAddressAsDeliveryAddress}/>
-                    </div>
+                    </Address.Field>
                   ))
                 }
               </Address>
@@ -288,19 +296,17 @@ class Checkout extends Component {
           }
           </Layout.Section>
         </Layout>
-        <div>
-          <ul>
-            <li>Products price: { price.products }</li>
-            <li>Payment price: { price.payment }</li>
-            <li>Delivery price: { price.delivery }</li>
-          </ul>
-          <div>
-            Total price: { price.products + price.payment + price.delivery }
-          </div>
-        </div>
-        <button onClick={this.proceedToCheckout} disabled={!canProceedToCheckout}>
-          { this.state.isFetching === true ? 'Loading...' : 'Proceed to checkout'}
-        </button>
+        <Summary>
+          <Summary.Parts>
+            <Summary.Part><span>Products price</span><span>{ price.products }</span></Summary.Part>
+            <Summary.Part><span>Payment price</span><span>{ price.payment }</span></Summary.Part>
+            <Summary.Part><span>Delivery price</span><span>{ price.delivery }</span></Summary.Part>
+            <Summary.Part total><span>Total price</span><span>{ price.products + price.payment + price.delivery }</span></Summary.Part>
+          </Summary.Parts>
+          <Summary.Button onClick={this.proceedToCheckout} disabled={!canProceedToCheckout}>
+            { this.state.isFetching === true ? 'Loading...' : 'Proceed to checkout'}
+          </Summary.Button>
+        </Summary>
       </Wrapper>
     )
   }
