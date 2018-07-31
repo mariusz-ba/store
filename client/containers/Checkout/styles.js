@@ -8,6 +8,10 @@ export const Layout = styled.div`
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
   margin: 1rem 0;
+
+  ${media.mobile`
+    grid-template-columns: 1fr;
+  `}
 `
 
 Layout.Section = styled.div`
