@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Spacer from 'blocks/Spacer';
 import Wrapper from 'blocks/Wrapper';
 
-import { removeProduct, changeProductAmount } from 'actions/basketActions';
+import { removeProduct, changeProductAmount, openBasket } from 'actions/basketActions';
 import { Products, Product } from 'components/basket/styles.js';
 import NumericInput from 'components/NumericInput';
 
@@ -49,6 +49,8 @@ class Checkout extends Component {
   }
 
   componentDidMount = async () => {
+    // Make sure the basket is closed
+    this.props.openBasket(false);
     // Fetch available payment methods
     const payments_data = await axios.get('/api/payments')
     const payments = payments_data.data;
@@ -314,7 +316,7 @@ class Checkout extends Component {
 
 const mapStateToProps = ({ basket }) => ({ basket });
 
-export default connect(mapStateToProps, { removeProduct, changeProductAmount })(Checkout);
+export default connect(mapStateToProps, { removeProduct, changeProductAmount, openBasket })(Checkout);
 
 /**
  * How does it work.
