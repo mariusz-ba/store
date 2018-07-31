@@ -23,7 +23,7 @@ Layout.Section = styled.div`
 
 Layout.Section.Heading = styled.h3`
   margin: 1rem 0;
-  color: #555;
+  color: rgba(0, 0, 0, .5);
 `
 
 // Checkbox options
@@ -129,7 +129,7 @@ Summary.Part = styled.li`
 
   font-size: ${props => props.total ? '1.3em' : '1em' };
   font-weight: ${props => props.total ? 'bold' : '400' };
-  color: ${props => props.total ? '#1a1a1a' : '#555' };
+  color: ${props => props.total ? '#1a1a1a' : 'rgba(0, 0, 0, .5)' };
   border-top: ${props => props.total ? '1px solid rgba(0, 0, 0, .125)' : 'none  ' };
 
   span {

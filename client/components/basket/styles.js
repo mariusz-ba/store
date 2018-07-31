@@ -29,7 +29,7 @@ export const Title = styled.h2`
   font-weight: 400;
   letter-spacing: .1rem;
 
-  color: ${props => props.disabled ? '#555555' : '#1a1a1a'};
+  color: ${props => props.disabled ? 'rgba(0, 0, 0, .5)' : '#1a1a1a'};
 `
 
 export const CloseButton = styled.button`
@@ -94,14 +94,14 @@ export const Products = styled.table`
 
   thead {
     tr {
-      border-bottom: 1px solid #555555;
+      border-bottom: 1px solid rgba(0, 0, 0, .125);
     }
   }
   th {
     padding-bottom: .5rem;
     text-align: left;
     font-weight: bold;
-    color: #555555;
+    color: rgba(0, 0, 0, .5);
   }
   
   tbody {
@@ -122,7 +122,7 @@ export const Product = styled.tr`
     span {
       display: block;
       &:nth-of-type(1) { font-weight: bold; }
-      &:nth-of-type(2) { color: #555555; }
+      &:nth-of-type(2) { color: rgba(0, 0, 0, .125); }
     }
 
     img {

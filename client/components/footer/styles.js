@@ -16,7 +16,7 @@ export const FooterStyled = styled.footer`
 `
 
 export const Section = styled.section`
-  color: #555555;
+  color: rgba(0, 0, 0, .5);
 
   ${
     media.mobile`
@@ -27,8 +27,8 @@ export const Section = styled.section`
   h4 {
     padding: .5rem 0;
     margin-bottom: 1rem;
-    border-top: 1px solid #555555;
-    border-bottom: 1px solid #555555;
+    border-top: 1px solid rgba(0, 0, 0, .125);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
 
     ${
       media.mobile`

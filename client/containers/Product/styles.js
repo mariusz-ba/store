@@ -16,7 +16,7 @@ export const ProductInfo = styled.div`
   ${media.mobile`
     padding-left: 0;
   `}
-  color: #555555;
+  color: rgba(0, 0, 0, .5);
 `
 
 export const Name = styled.h4`
