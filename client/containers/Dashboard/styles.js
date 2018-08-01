@@ -19,3 +19,14 @@ Layout.Right = styled.div`
   background: rgba(0, 0, 0, .02);
   padding: 1rem;
 `
+
+export const Section = styled.div``
+
+Section.Heading = styled.h2`
+  margin-bottom: .5rem;
+`
+
+Section.Description = styled.h4`
+  margin-bottom: 1rem;
+  color: rgba(0, 0, 0, .3);
+`
