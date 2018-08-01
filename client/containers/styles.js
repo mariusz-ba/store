@@ -53,3 +53,9 @@ export const Picture = styled.img`
     `
   }
 `
+
+export const Cover = styled.img`
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+`
