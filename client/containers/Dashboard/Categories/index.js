@@ -10,8 +10,31 @@ import {
 import CategoryEditor from './CategoryEditor';
 import Expander from 'components/Expander';
 
-import { Cards } from './styles';
 import Button from 'blocks/Button';
+import Form from 'blocks/Form';
+import { Cards } from './styles';
+import { Section } from '../styles';
+
+import styled from 'styled-components';
+
+const NewCategory = Form.extend`
+  max-width: 400px;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  background: #1086ed;
+  color: #fff;
+  & div,
+  & button {
+    margin: 0 1rem;
+  }
+`
+NewCategory.Heading = styled.h3`
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #fff;
+  background: rgb(0, 126, 218);
+`
 
 class Categories extends Component {
   state = {
@@ -46,12 +69,25 @@ class Categories extends Component {
     const { categories } = this.props.categories;
 
     return (
-      <div>
-        <form>
-          <input type="text" placeholder="Name" value={name} onChange={this.changeName}/>
-          <input type="text" placeholder="Description" value={description} onChange={this.changeDescription}/>
-          <button type="submit" onClick={this.submitCategory}>Submit</button>
-        </form>
+      <Section>
+        <Section.Heading>Categories</Section.Heading>
+        <Section.Description>Create new categories and manage existing ones.</Section.Description>
+        <NewCategory>
+          <NewCategory.Heading>Create new category</NewCategory.Heading>
+          <Form.Field>
+            <Form.Label>
+              Name
+              <Form.Input type="text" placeholder="Name" value={name} onChange={this.changeName}/>
+            </Form.Label>
+          </Form.Field>
+          <Form.Field>
+            <Form.Label>
+              Description
+              <Form.Input type="text" placeholder="Description" value={description} onChange={this.changeDescription}/>
+            </Form.Label>
+          </Form.Field> 
+          <Button type="submit" onClick={this.submitCategory}>Submit</Button>
+        </NewCategory>
         <Cards>
         {
           Object.values(categories).map(category => (
@@ -74,7 +110,7 @@ class Categories extends Component {
           ))
         }
         </Cards>
-      </div>
+      </Section>
     )
   }
 }
