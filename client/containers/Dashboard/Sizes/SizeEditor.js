@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Button from 'blocks/Button';
+import Form from 'blocks/Form';
+
 export default class SizeEditor extends Component {
   state = {
     name: this.props.name,
@@ -30,11 +33,21 @@ export default class SizeEditor extends Component {
     const { name, short } = this.state;
 
     return (
-      <form>
-        <input type="text" placeholder="Name" value={name} onChange={this.changeName}/>
-        <input type="text" placeholder="Short" value={short} onChange={this.changeShort}/>
-        <button type="submit" onClick={this.submit}>Submit</button>
-      </form>
+      <Form>
+        <Form.Field>
+          <Form.Label>
+            Name
+            <Form.Input type="text" placeholder="Name" value={name} onChange={this.changeName}/>
+          </Form.Label>
+        </Form.Field>
+        <Form.Field>
+          <Form.Label>
+            Short
+            <Form.Input type="text" placeholder="Short" value={short} onChange={this.changeShort}/>
+          </Form.Label>
+        </Form.Field>
+        <Button type="submit" onClick={this.submit}>Submit</Button>
+      </Form>
     )
   }
 }
