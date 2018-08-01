@@ -10,6 +10,9 @@ import {
 import CategoryEditor from './CategoryEditor';
 import Expander from 'components/Expander';
 
+import { Cards } from './styles';
+import Button from 'blocks/Button';
+
 class Categories extends Component {
   state = {
     name: '',
@@ -49,23 +52,28 @@ class Categories extends Component {
           <input type="text" placeholder="Description" value={description} onChange={this.changeDescription}/>
           <button type="submit" onClick={this.submitCategory}>Submit</button>
         </form>
-        <ul>
-          {
-            Object.values(categories).map(category => (
-              <li key={category._id}>
-                <Expander
-                  head={(<h1>Name: {category.name}, Description: {category.description}</h1>)}
-                  body={(
-                    <div>
-                      <CategoryEditor name={category.name} description={category.description} onSubmit={(name, description) => this.changeCategory(category._id, name, description)}/>
-                      <button onClick={() => this.props.deleteCategory(category._id)}>Delete category</button>
-                    </div>
-                  )}
-                />
-              </li>
-            ))
-          }
-        </ul>
+        <Cards>
+        {
+          Object.values(categories).map(category => (
+            <Cards.Item key={category._id}>
+              <Expander
+                head={(
+                  <React.Fragment>
+                    <h3>{category.name}</h3>
+                    <small>{category._id}</small>
+                  </React.Fragment>
+                )}
+                body={(
+                  <div>
+                    <CategoryEditor name={category.name} description={category.description} onSubmit={(name, description) => this.changeCategory(category._id, name, description)}/>
+                    <Button type="danger" onClick={() => this.props.deleteCategory(category._id)}>Delete</Button>
+                  </div>
+                )}
+              />
+            </Cards.Item>
+          ))
+        }
+        </Cards>
       </div>
     )
   }
