@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Form = styled.form`
   margin-top: 1rem;
+  justify-content: space-between;
 `;
 
 Form.Field = styled.div`
