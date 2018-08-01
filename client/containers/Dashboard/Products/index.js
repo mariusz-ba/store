@@ -14,7 +14,7 @@ import { fetchCategories } from 'actions/categoriesActions';
 
 import AvailabilityEditor from 'components/editors/AvailabilityEditor';
 import ProductEditor from 'components/editors/ProductEditor';
-
+import ProductsTable from 'components/ProductsTable';
 import Expander from 'components/Expander';
 
 class Products extends Component {
@@ -58,6 +58,10 @@ class Products extends Component {
 
     return (
       <div>
+        <ProductsTable 
+          products={Object.values(products)} 
+          sizes={sizes} 
+          categories={categories}/>
         <ul>
           { products &&
             Object.values(products).map(product => (
