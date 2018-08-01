@@ -8,14 +8,14 @@ const Button = styled.button`
   transition: background linear .2s;
 
   color: ${ 
-    props => props.type ? 
-      colors[props.type].color : 
+    props => props.mode ? 
+      colors[props.mode].color : 
       colors['light'].color 
   };
 
   background: ${ 
-    props => props.type ? 
-      colors[props.type].background : 
+    props => props.mode ? 
+      colors[props.mode].background : 
       colors['light'].background 
   };
   
@@ -23,8 +23,8 @@ const Button = styled.button`
     cursor: pointer;
 
     background: ${ 
-      props => props.type ? 
-        colors[props.type].hover : 
+      props => props.mode ? 
+        colors[props.mode].hover : 
         colors['light'].hover
     };
   }

@@ -65,8 +65,8 @@ class Categories extends Component {
                 )}
                 body={(
                   <div>
+                    <Button mode="danger" onClick={() => this.props.deleteCategory(category._id)}>Delete</Button>
                     <CategoryEditor name={category.name} description={category.description} onSubmit={(name, description) => this.changeCategory(category._id, name, description)}/>
-                    <Button type="danger" onClick={() => this.props.deleteCategory(category._id)}>Delete</Button>
                   </div>
                 )}
               />
