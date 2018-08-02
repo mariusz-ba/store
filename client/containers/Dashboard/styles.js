@@ -30,3 +30,13 @@ Section.Description = styled.h4`
   margin-bottom: 1rem;
   color: rgba(0, 0, 0, .3);
 `
+
+export const Cards = styled.ul`
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+`
+
+Cards.Item = styled.li``
