@@ -25,8 +25,8 @@ class Navigation extends Component {
         <List>
         { 
           links.map((link, index) => (
-            <li>
-              <Item key={index} to={link.path} selected={link.path === pathname}>
+            <li key={index}>
+              <Item to={link.path} selected={link.path === pathname}>
                 <Item.Icon className={link.icon}></Item.Icon>
                 <Item.Text>
                   {link.text}
