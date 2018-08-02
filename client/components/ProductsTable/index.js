@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { pick } from 'lodash';
-import { Link } from 'react-router-dom';
 
-import { Table } from './styles';
+import { Button, Link, Table } from './styles';
 
 export default class ProductsTable extends Component {
   static propTypes = {
     categories: PropTypes.object.isRequired,
     products: PropTypes.array.isRequired,
-    sizes: PropTypes.object.isRequired
+    sizes: PropTypes.object.isRequired,
+    onDeleteProduct: PropTypes.func.isRequired
   }
 
   static defaultProps = {
     categories: {},
     products: [],
     sizes: {}
+  }
+
+  deleteProduct = productId => {
+    this.props.onDeleteProduct(productId);
   }
 
   render() {
@@ -58,8 +62,8 @@ export default class ProductsTable extends Component {
               <td>&euro; {product.price}</td>
               <td>
                 <div>
-                  <button>Delete</button>
-                  <Link to={`/dashboard/products/edit/${product._id}`}>Edit</Link>
+                  <Button onClick={() => this.deleteProduct(product._id)}><i className="fas fa-trash-alt"></i></Button>
+                  <Link to={`/dashboard/products/edit/${product._id}`}><i className="fas fa-edit"></i></Link>
                 </div>
               </td>
             </tr>

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Table = styled.table`
   width: 100%;  
@@ -57,3 +58,23 @@ Table.Body = styled.tbody`
     }
   }
 `
+
+export const Button = styled.button`
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: color linear .1s;
+
+  &:hover {
+    cursor: pointer;
+    color: #1086ed;
+  }
+`
+
+export const Link = Button.withComponent(RouterLink);

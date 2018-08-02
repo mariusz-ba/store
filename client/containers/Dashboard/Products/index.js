@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchSizes } from 'actions/sizesActions';
-import { fetchProducts } from 'actions/productsActions';
+import { fetchProducts, deleteProduct } from 'actions/productsActions';
 import { fetchCategories } from 'actions/categoriesActions';
 
 import ProductsTable from 'components/ProductsTable';
@@ -32,7 +32,8 @@ class Products extends Component {
         <ProductsTable 
           products={Object.values(products)} 
           sizes={sizes} 
-          categories={categories}/>
+          categories={categories}
+          onDeleteProduct={(productId) => this.deleteProduct(productId)}/>
       </div>
     )
   }
@@ -44,5 +45,5 @@ const mapStateToProps =
 
 export default connect(
   mapStateToProps, 
-  { fetchProducts, fetchCategories, fetchSizes }
+  { fetchProducts, fetchCategories, fetchSizes, deleteProduct }
 )(Products);
