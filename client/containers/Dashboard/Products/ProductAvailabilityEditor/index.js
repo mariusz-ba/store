@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { pick } from 'lodash';
 
+import Button from 'blocks/Button';
+import Form from 'blocks/Form';
+
 export default class AvailabilityEditor extends Component {
   state = {
     _id: this.props._id,
@@ -47,20 +50,22 @@ export default class AvailabilityEditor extends Component {
 
     return (
       <div>
-        <form>
-          <select onChange={this.changeSize}>
-            <option value="null">Select size</option>
-            {
-              sizes.map((size, index) => {
-                if(size._id === this.state.size)
-                  return <option key={index} value={size._id} selected>{size.name}({size.short})</option>
-                return <option key={index} value={size._id}>{size.name}({size.short})</option>
-              })
-            }
-          </select>
-          <input type="text" placeholder="Amount" value={amount} onChange={this.changeAmount}/>
-          <button type="submit" onClick={this.submit}>Submit</button>
-        </form>
+        <Form>
+          <Form.Field inline>
+            <Form.Select onChange={this.changeSize}>
+              <option value="null">Select size</option>
+              {
+                sizes.map((size, index) => {
+                  if(size._id === this.state.size)
+                    return <option key={index} value={size._id} selected>{size.name}({size.short})</option>
+                  return <option key={index} value={size._id}>{size.name}({size.short})</option>
+                })
+              }
+            </Form.Select>
+            <Form.Input type="text" placeholder="Amount" value={amount} onChange={this.changeAmount}/>
+            <Button mode="primary" onClick={this.submit}>Submit</Button>
+          </Form.Field>
+        </Form>
       </div>
     )
   }
