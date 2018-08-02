@@ -6,24 +6,29 @@ const Form = styled.form`
 `;
 
 Form.Field = styled.div`
-  display: block;
+  display: ${props => props.inline ? 'grid' : 'block'};
+  grid-template-columns: auto min-content;
+  grid-column-gap: 1rem;
   margin-bottom: 1rem;
 `
 
 Form.Label = styled.label`
   font-weight: bold;
   font-size: .875rem;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
 `
 
 Form.Input = styled.input`
+  width: 100%;
   font-size: 1em;
-  margin-top: .5rem;
   padding: .5rem;
   border: 0;
   border-radius: 3px;
 `
+
+Form.Select = Form.Input.withComponent('select');
+Form.Textarea = Form.Input.withComponent('textarea');
 
 export default Form;
