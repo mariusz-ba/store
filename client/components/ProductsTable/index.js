@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { pick } from 'lodash';
+import { Link } from 'react-router-dom';
 
 import { Table } from './styles';
 
@@ -58,7 +59,7 @@ export default class ProductsTable extends Component {
               <td>
                 <div>
                   <button>Delete</button>
-                  <button>Edit</button>
+                  <Link to={`/dashboard/products/edit/${product._id}`}>Edit</Link>
                 </div>
               </td>
             </tr>
