@@ -13,11 +13,12 @@ class ProductsNew extends Component {
   }
 
   onSubmit = product => {
+    delete product._id;
     this.props.createProduct(product);
   }
 
   render() {
-    const categories = this.props.categories;
+    const { categories } = this.props.categories;
 
     return (
       <div>

@@ -27,7 +27,7 @@ export default class ProductEditor extends Component {
   }
 
   static defaultProps = {
-    _id: null,
+    _id: "null",
     name: '',
     description: '',
     price: '',
@@ -91,8 +91,8 @@ export default class ProductEditor extends Component {
             { categories &&
               categories.map(category => {
                 if(category._id === this.state.category)
-                  return <option value={category._id} selected>{category.name}</option>
-                return <option value={category._id}>{category.name}</option>
+                  return <option key={category._id} value={category._id} selected>{category.name}</option>
+                return <option key={category._id} value={category._id}>{category.name}</option>
               })
             }
           </select>
