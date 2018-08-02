@@ -6,10 +6,17 @@ const Form = styled.form`
 `;
 
 Form.Field = styled.div`
-  display: ${props => props.inline ? 'grid' : 'block'};
-  grid-template-columns: auto min-content;
-  grid-column-gap: 1rem;
+  display: ${props => props.inline ? 'flex' : 'block'};
   margin-bottom: 1rem;
+
+  input,
+  select {
+    margin-right: 1rem;
+  }
+
+  select {
+    flex-basis: ${props => props.inline ? '200px' : 'auto' }; 
+  }
 `
 
 Form.Label = styled.label`
