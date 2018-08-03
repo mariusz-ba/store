@@ -1,5 +1,5 @@
 # Store
-![alt text](https://preview.ibb.co/nfBsTz/Home.png "Home Page")
+![alt text](https://i.imgur.com/Il3VsDI.jpg "Home Page")
 
 This is a simple ecommerce website that is targeting clothing stores. The store owner is given an account that can be used to sign in to the dashboard page. From the dashboard user is able to manage all needed data such as:
 * Managing products categories
@@ -9,7 +9,7 @@ This is a simple ecommerce website that is targeting clothing stores. The store 
 * Managing payments methods
 * Browse all orders, change orders status, cancel orders
 
-![alt text](https://preview.ibb.co/mxue8z/Products.png "Dashboard")
+![alt text](https://i.imgur.com/pXTqvrs.png "Home Page")
 
 ## Getting Started
 
