@@ -1,8 +1,10 @@
 // Dashboard page layout
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import { Layout } from './styles';
+
+import AuthRequiredRoute from 'components/AuthRequiredRoute';
 
 import Categories from './Categories';
 import Deliveries from './Deliveries';
@@ -24,15 +26,15 @@ export default class Dashboard extends Component {
         </Layout.Left>
         <Layout.Right>
           <Switch>
-            <Route exact path={this.props.match.path} component={Overview}/>
-            <Route path={`${this.props.match.path}/products/new`} component={ProductsNew}/>
-            <Route path={`${this.props.match.path}/products/edit/:id`} component={ProductsEdit}/>
-            <Route path={`${this.props.match.path}/products`} component={Products}/>
-            <Route path={`${this.props.match.path}/orders`} component={Orders}/>
-            <Route path={`${this.props.match.path}/categories`} component={Categories}/>
-            <Route path={`${this.props.match.path}/sizes`} component={Sizes}/>
-            <Route path={`${this.props.match.path}/payments`} component={Payments}/>
-            <Route path={`${this.props.match.path}/deliveries`} component={Deliveries}/>
+            <AuthRequiredRoute exact path={this.props.match.path} component={Overview}/>
+            <AuthRequiredRoute path={`${this.props.match.path}/products/new`} component={ProductsNew}/>
+            <AuthRequiredRoute path={`${this.props.match.path}/products/edit/:id`} component={ProductsEdit}/>
+            <AuthRequiredRoute path={`${this.props.match.path}/products`} component={Products}/>
+            <AuthRequiredRoute path={`${this.props.match.path}/orders`} component={Orders}/>
+            <AuthRequiredRoute path={`${this.props.match.path}/categories`} component={Categories}/>
+            <AuthRequiredRoute path={`${this.props.match.path}/sizes`} component={Sizes}/>
+            <AuthRequiredRoute path={`${this.props.match.path}/payments`} component={Payments}/>
+            <AuthRequiredRoute path={`${this.props.match.path}/deliveries`} component={Deliveries}/>
           </Switch>
         </Layout.Right>
       </Layout>

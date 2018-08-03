@@ -11,6 +11,7 @@ import webpackConfig from '../webpack.config.dev.js';
 const app = express();
 
 import { 
+  authController,
   productController,
   categoryController,
   sizeController,
@@ -37,8 +38,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// import User from './models/UserModel';
+// const usr = new User({ username: 'admin', password: 'admin' });
+// usr.save((err, user) => {
+//   console.log('saved user: ', user);
+// })
 
 // Routes
+app.use('/api/auth', authController);
 app.use('/api/products', productController);
 app.use('/api/categories', categoryController);
 app.use('/api/sizes', sizeController);

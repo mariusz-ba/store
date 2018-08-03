@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { signOut } from 'actions/authActions';
+import { List, Item, Nav, Signout } from './styles';
 
-import { List, Item } from './styles';
-
-class Navigation extends Component {
+export class Navigation extends Component {
   state = {
     links: [
       { path: '/dashboard', text: 'Overview', icon: 'fas fa-home' },
@@ -16,12 +17,17 @@ class Navigation extends Component {
     ]
   }
 
+  signout = async () => {
+    await this.props.signOut();
+    this.props.history.push('/');
+  }
+
   render() {
     const { links } = this.state;
     const { pathname } = this.props.location;
 
     return (
-      <nav>
+      <Nav>
         <List>
         { 
           links.map((link, index) => (
@@ -39,9 +45,13 @@ class Navigation extends Component {
           ))
         }
         </List>
-      </nav>
+        <Signout to="#" onClick={this.signout}>
+          <Item.Icon className="fas fa-sign-out-alt"></Item.Icon>
+          <Item.Text>Sign out</Item.Text>
+        </Signout>
+      </Nav>
     )
   }
 }
 
-export default withRouter(Navigation);
+export default withRouter(connect(null, { signOut })(Navigation));

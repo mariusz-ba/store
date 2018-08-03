@@ -41,3 +41,14 @@ Item.Badge = styled.span`
   background: #1086ed;
   color: white;
 `
+
+export const Signout = Item.extend`
+  border-top: 1px solid rgba(0, 0, 0, .125) !important;
+`
+
+export const Nav = styled.nav`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`

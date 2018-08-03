@@ -14,6 +14,7 @@ import Home from './containers/Home';
 import Payment from './containers/Checkout/Payment';
 import Product from './containers/Product';
 import Products from './containers/Products';
+import Signin from './containers/Signin';
 import Track from './containers/Track';
 
 import Basket from './components/basket';
@@ -47,6 +48,7 @@ export default () => {
     <Router>
       <Switch>
         <Route path="/dashboard" component={Admin}/>
+        <Route path="/signin" component={Signin}/>
         <Route path="/" component={Client}/>
       </Switch>
     </Router>

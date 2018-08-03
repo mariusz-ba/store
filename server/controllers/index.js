@@ -5,8 +5,10 @@ import availableProductController from './availableProductController';
 import paymentController from './paymentController';
 import deliveryController from './deliveryController';
 import orderController from './orderController';
+import authController from './authController';
 
 module.exports = {
+  authController,
   productController,
   categoryController,
   sizeController,
