@@ -150,7 +150,7 @@ class Checkout extends Component {
     } = this.state;
 
     const price = {
-      products: Object.values(this.props.basket.products).reduce((a, item) => a + (item.price * item.amount), 0),
+      products: Math.round(Object.values(this.props.basket.products).reduce((a, item) => a + (item.price * item.amount), 0) * 1e12) / 1e12,
       payment: payment.selected !== undefined ? payment.options[payment.selected].price : 0,
       delivery: delivery.selected !== undefined ? delivery.options[delivery.selected].price : 0
     }
