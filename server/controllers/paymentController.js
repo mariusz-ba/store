@@ -2,6 +2,7 @@ import express from 'express';
 import Payment from '../models/PaymentModel';
 import { paymentService } from '../services';
 import { catchExceptions } from '../middleware/exceptions';
+import authenticate from '../middleware/authenticate';
 
 const router = express.Router();
 
@@ -23,6 +24,7 @@ router.get(
 
 router.post(
   '/',
+  authenticate,
   catchExceptions(async (req, res) => {
     const payment = new Payment({ ...req.body });
     const savedPayment = await paymentService.savePayment(payment);
@@ -32,6 +34,7 @@ router.post(
 
 router.put(
   '/:id',
+  authenticate,
   catchExceptions(async (req, res) => {
     const payment = await paymentService.updatePayment(req.params.id, { ...req.body });
     res.status(200).json(payment);
@@ -40,6 +43,7 @@ router.put(
 
 router.delete(
   '/:id',
+  authenticate,
   catchExceptions(async (req, res) => {
     const deleted = await paymentService.deletePayment(req.params.id);
     res.status(200).json(deleted);

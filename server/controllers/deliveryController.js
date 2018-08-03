@@ -2,6 +2,7 @@ import express from 'express';
 import Delivery from '../models/DeliveryModel';
 import { deliveryService } from '../services';
 import { catchExceptions } from '../middleware/exceptions';
+import authenticate from '../middleware/authenticate';
 
 const router = express.Router();
 
@@ -23,6 +24,7 @@ router.get(
 
 router.post(
   '/',
+  authenticate,
   catchExceptions(async (req, res) => {
     const delivery = new Delivery({ ...req.body });
     const savedDelivery = await deliveryService.saveDelivery(delivery);
@@ -32,6 +34,7 @@ router.post(
 
 router.put(
   '/:id',
+  authenticate,
   catchExceptions(async (req, res) => {
     const delivery = await deliveryService.updateDelivery(req.params.id, { ...req.body });
     res.status(200).json(delivery);
@@ -40,6 +43,7 @@ router.put(
 
 router.delete(
   '/:id',
+  authenticate,
   catchExceptions(async (req, res) => {
     const deleted = await deliveryService.deleteDelivery(req.params.id);
     res.status(200).json(deleted);
