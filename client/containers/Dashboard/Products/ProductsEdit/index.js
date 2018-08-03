@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSizes } from 'actions/sizesActions';
 import { 
@@ -129,7 +130,7 @@ const mapStateToProps =
   ({ categories, products, sizes }) => 
   ({ categories, products, sizes });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps, 
   { 
     fetchCategories, 
@@ -140,4 +141,4 @@ export default connect(
     updateProductAvailability,
     deleteProductAvailability
   }
-)(ProductsEdit);
+)(ProductsEdit));
