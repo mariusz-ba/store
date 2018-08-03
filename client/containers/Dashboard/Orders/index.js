@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { mapKeys, omit } from 'lodash';
 
-import styled from 'styled-components';
-const Table = styled.table`
-  border-collapse: collapse;
-
-  td {
-    border: 1px solid black;
-  }
-`
+import { Table, Button } from './styles';
 
 export default class Orders extends Component {
   state = {
@@ -43,7 +36,7 @@ export default class Orders extends Component {
     return (
       <div>
         <Table>
-          <thead>
+          <Table.Head>
             <tr>
               <th>Order id</th>
               <th>Status</th>
@@ -52,12 +45,12 @@ export default class Orders extends Component {
               <th>Delivery</th>
               <th></th>
             </tr>
-          </thead>
-          <tbody> 
+          </Table.Head>
+          <Table.Body> 
           {
             Object.values(orders).map(order => (
-              <tr>
-                <td>{order._id}</td>
+              <tr key={order._id}>
+                <td><span>{order._id}</span></td>
                 <td>
                   <select onChange={(e) => this.changeStatus(order._id, e.target.value)} value={order.status}>
                     <option value="Transaction Pending">Transaction Pending</option>
@@ -66,14 +59,14 @@ export default class Orders extends Component {
                     <option value="Completed">Completed</option>
                   </select>
                 </td>
-                <td>{order.price}</td>
+                <td>&euro; {order.price}</td>
                 <td>{order.payment && order.payment.name}</td>
                 <td>{order.delivery && order.delivery.name}</td>
-                <td><button onClick={() => this.cancelOrder(order._id)}>Cancel</button></td>
+                <td><Button onClick={() => this.cancelOrder(order._id)}><i className="fas fa-trash-alt"></i></Button></td>
               </tr>
             ))
           }
-          </tbody>
+          </Table.Body>
         </Table>    
       </div>
     )
