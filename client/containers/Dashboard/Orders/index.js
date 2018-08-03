@@ -3,6 +3,7 @@ import axios from 'axios';
 import { mapKeys, omit } from 'lodash';
 
 import { Table, Button } from './styles';
+import { Title, Description } from 'blocks/Dashboard';
 
 export default class Orders extends Component {
   state = {
@@ -35,6 +36,8 @@ export default class Orders extends Component {
 
     return (
       <div>
+        <Title>Orders</Title>
+        <Description>Manage your orders</Description>
         <Table>
           <Table.Head>
             <tr>

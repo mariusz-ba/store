@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Grid from 'blocks/Grid';
+import { Title, Description } from 'blocks/Dashboard';
 
 export default class Overview extends Component {
   render() {
     return (
-      <Grid columns={3} columnGap="10px">
-        <div>Total views: 0</div>
-        <div>Total orders: 0</div>
-        <div>New orders: 10</div>
-      </Grid>
+      <div>
+        <Title>Overview</Title>
+        <Description>Welcome on stores dashboard. On your left You can find menu that is used to navigate through the dashboard pages.</Description>
+      </div>
     )
   }
 }
