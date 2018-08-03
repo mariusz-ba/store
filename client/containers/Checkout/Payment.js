@@ -74,6 +74,8 @@ class Payment extends Component {
     this.setState({ isFetching: true });
     const response = await axios.get(`/api/orders/${this.props.match.params.id}${this.props.location.search}`);
     const order = response.data;
+    order.payment.url = order.payment.url.replace('{price}', order.price);
+    order.payment.url = order.payment.url.replace('{description}', `Order nr: ${order._id}`);
     this.setState({ isFetching: false, order });
   }
 
