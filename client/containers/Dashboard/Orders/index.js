@@ -67,8 +67,8 @@ export default class Orders extends Component {
                   </select>
                 </td>
                 <td>{order.price}</td>
-                <td>{order.payment.name}</td>
-                <td>{order.delivery.name}</td>
+                <td>{order.payment && order.payment.name}</td>
+                <td>{order.delivery && order.delivery.name}</td>
                 <td><button onClick={() => this.cancelOrder(order._id)}>Cancel</button></td>
               </tr>
             ))
